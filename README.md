@@ -67,3 +67,6 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 ・フロントエンド：Tailwind CSS
 ・データベース：PostgreSQL
 ・追加予定のライブラリ: SimpleCalendar（カレンダー機能）, ActiveStorage（画像アップロード）, Kaminari(ページネーション)など
+
+## 画面遷移図
+figma:https://www.figma.com/design/SJL6Z0gGEtckps7N2yZ4kl/NatureHabit?node-id=0-1&t=QIsSXZYWmVDyMSQK-1
