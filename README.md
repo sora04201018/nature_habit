@@ -72,4 +72,4 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 figma:https://www.figma.com/design/SJL6Z0gGEtckps7N2yZ4kl/NatureHabit?node-id=0-1&t=QIsSXZYWmVDyMSQK-1
 
 ## ER図
-![alt text](NatureHabit_ER図.png)
+![alt text](NatureHabit_ER図-2.png)
