@@ -1,0 +1,33 @@
+# ベースイメージ指定（Ruby)
+FROM ruby:3.2.2
+#日本語対応
+ENV LANG C.UTF-8
+# 東京時刻に設定
+ENV TZ Asia/Tokyo
+#必要ツールのインストール
+RUN apt-get update -qq && \
+    apt-get install -y \
+    build-essential \
+    libpq-dev \
+    curl \
+    vim \
+    git \
+    nodejs \
+    npm && \
+    npm install -g yarn && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# コンテナ内で作業する場所の設定
+WORKDIR /app
+
+#bundlerのインストール
+RUN gem install bundler
+# Gemfileのコピー
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+# アプリケーションのコード全体をコピー
+COPY . .
+# ポート番号の公開(3000)
+EXPOSE 3000
+# Railsを起動するコマンド
+CMD ["./bin/dev"]
