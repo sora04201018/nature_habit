@@ -18,9 +18,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="h-screen flex flex-col">
+    <!-- ヘッダー挿入 -->
+    <%= render 'shared/header' %>
+    <main class="w-full h-full flex">
       <%= yield %>
     </main>
+    <!-- フッター挿入-->
+    <%= render 'shared/footer' %>
   </body>
 </html>
