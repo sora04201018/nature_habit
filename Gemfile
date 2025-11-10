@@ -56,4 +56,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
+# tailwind導入
 gem "tailwindcss-rails", "~> 4.4"
+# devise導入
+gem "devise"
