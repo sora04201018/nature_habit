@@ -4,6 +4,10 @@
   </div>
 
   <nav class="space-x-6 text-gray-600">
-    <%= link_to "ログイン", "#", class: "hover:text-green-600" %>
+    <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "hover:text-green-600", method: :delete %>
+    <% else %>
+      <%= link_to "ログイン", "#", class: "hover:text-green-600" %>
+    <% end %>
   </nav>
 </header>
