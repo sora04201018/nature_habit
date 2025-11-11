@@ -61,5 +61,5 @@ gem "tailwindcss-rails", "~> 4.4"
 # devise導入
 gem "devise"
 # i18n導入
-gem 'rails-i18n'
-gem 'devise-i18n'
+gem "rails-i18n"
+gem "devise-i18n"
