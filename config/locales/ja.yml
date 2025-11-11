@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "入力にエラーがあります"
+  devise:
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"
+    registrations:
+      user:
+        signed_up: "アカウント登録が完了しました。"
+        updated: "アカウント情報を更新しました。"
+        
