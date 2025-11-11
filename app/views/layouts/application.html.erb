@@ -21,6 +21,8 @@
   <body class="h-screen flex flex-col">
     <!-- ヘッダー挿入 -->
     <%= render 'shared/header' %>
+    <!-- フラッシュメッセージを挿入 -->
+    <%= render 'shared/flash_message' %>
     <main class="w-full h-full flex">
       <%= yield %>
     </main>
