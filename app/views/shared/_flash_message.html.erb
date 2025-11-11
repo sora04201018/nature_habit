@@ -1,5 +1,7 @@
-<div class="w-full mb-2">
-  <% flash.each do |message_type, message| %>
-    <div><%= message %></div>
-  <% end %>
-</div>
+<% flash.each do |message_type, message| %>
+  <% next if message.blank? %> <%# messageが空の時はスキップ %>
+    <div class="w-full fixed flex justify-betwwen items-center absolute top-[70px] px-5 py-3 rounded-lg shadow-lg text-white transition-all duration-500 <%= message_type == 'notice' ? 'bg-green-500' : 'bg-red-500' %>" data-controller="flash"> <%# 三項演算子で分岐, Stimulusで動的処理 %>
+      <span><%= message %></span>
+      <button class="ml-4 text-white font-bold text-lg hover:text-gray-200" data-action="click->flash#close">✖︎</button> <%# Stimulusでクリック→閉じるを処理 %>
+    </div>
+<% end %>
