@@ -48,6 +48,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener" # 開発環境でのパスワードリセットメール確認
+  gem "letter_opener_web" # 開発環境でブラウザ内メール確認
 end
 
 group :test do

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # letter_opener メールチェック用ルート（開発環境専用）
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  # devise用ルート（user認証関係）
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
