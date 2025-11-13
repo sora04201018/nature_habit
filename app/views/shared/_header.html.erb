@@ -7,7 +7,7 @@
     <% if user_signed_in? %>
       <%= link_to "ログアウト", destroy_user_session_path, class: "hover:text-green-600", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
     <% else %>
-      <%= link_to "ログイン", "#", class: "hover:text-green-600" %>
+      <%= link_to "ログイン", new_user_session_path, class: "hover:text-green-600" %>
     <% end %>
   </nav>
 </header>

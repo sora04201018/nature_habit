@@ -76,8 +76,26 @@ Rails.application.configure do
 
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
-  config.action_mailer.perform_caching = false
 
+  # 本番環境：メール関係処理
+  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  # renderのURL
+  config.action_mailer.default_url_options = { host: "nature-habit.onrender.com", protocol: "https" }
+
+  # gmail経由での送信(Gmail SMTP使用)
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    user_name: ENV["GMAIL_USER_NAME"], # 自分のgmailアドレス
+    password: ENV["GMAIL_APP_PASSWORD"], # アプリパスワード
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
