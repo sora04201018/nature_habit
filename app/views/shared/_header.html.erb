@@ -1,6 +1,10 @@
 <header class="w-full bg-white shadow-md py-4 px-8 flex justify-between items-center">
   <div class="text-2xl font-bold text-green-700">
-    <%= link_to "NatureHabit", root_path, class: "hover:text-green-600 transition" %>
+    <% if user_signed_in? %>
+      <%= link_to "NatureHabit", dashboard_index_path, class: "hover:text-green-600, transition" %>
+    <% else %>
+      <%= link_to "NatureHabit", root_path, class: "hover:text-green-600 transition" %>
+    <% end %>
   </div>
 
   <nav class="space-x-6 text-gray-600">
