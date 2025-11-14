@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
   # letter_opener メールチェック用ルート（開発環境専用）
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
+  # トップページ
   root to: "home#home"
-  # root "posts#index"
+
+  # ダッシュボード
+  get "dashboard", to: "dashboard#index"
 end

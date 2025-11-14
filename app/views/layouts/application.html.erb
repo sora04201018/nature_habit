@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "App" %></title>
+    <title><%= content_for(:title) || "NatureHabit" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -18,14 +18,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col w-screen bg-gradient-to-b from-green-50 to-white"> <!-- アプリケーション全体のレイアウト -->
     <!-- ヘッダー挿入 -->
     <%= render 'shared/header' %>
     <!-- フラッシュメッセージを挿入 -->
     <%= render 'shared/flash_message' %>
-    <main class="w-full h-full flex">
-      <%= yield %>
-    </main>
+
+    <%= yield %> <!-- 各viewが差し込まれる -->
+
     <!-- フッター挿入-->
     <%= render 'shared/footer' %>
   </body>
