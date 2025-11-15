@@ -22,4 +22,7 @@ Rails.application.routes.draw do
 
   # ダッシュボード
   get "dashboard", to: "dashboard#index"
+
+  # habitsルート
+  resources :habits, only: %i[ index new show edit create update destroy ]
 end
