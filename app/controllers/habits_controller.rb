@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :set_habits, only: %i[ show edit update destroy ]
+  # before_action :set_habits, only: %i[ show edit update destroy ]
 
   def index
     @habits = current_user.habits.order(created_at: :desc)
@@ -25,7 +25,7 @@ class HabitsController < ApplicationController
     params.require(:habit).permit(:title, :frequency, :start_date)
   end
 
-  #def set_habits
-    #@habit = current_user.habits.find_by(id: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
-  #end
+  # def set_habits
+  # @habit = current_user.habits.find_by(id: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
+  # end
 end
