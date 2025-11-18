@@ -10,6 +10,10 @@
   </div>
 
   <div class="flex justify-end mt-3 mb-5">
-    <%= f.submit "登録", class: "bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
+    <% if current_page?(new_habit_path) %>
+      <%= f.submit "登録", class: "bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
+    <% else %>
+      <%= f.submit "更新", class: "bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
+    <% end %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user! # ログインしているユーザーのみ
-  before_action :set_habits, only: %i[ show ]
+  before_action :set_habits, only: %i[ show edit update ]
 
   def index
     @habits = current_user.habits.order(created_at: :desc)
@@ -12,10 +12,20 @@ class HabitsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @habit.update(habit_params)
+      redirect_to habit_path, notice: "習慣を更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def create
     @habit = current_user.habits.build(habit_params)
     if @habit.save
-      redirect_to dashboard_index_path, notice: "習慣を作成しました"
+      redirect_to dashboard_path, notice: "習慣を作成しました"
     else
       render :new, status: :unprocessable_entity
     end

@@ -5,7 +5,7 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     user = users(:one)
     sign_in user
 
-    get dashboard_index_url
+    get dashboard_url
     assert_response :success
   end
 end
