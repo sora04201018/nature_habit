@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "dashboard/index"
   # letter_opener メールチェック用ルート（開発環境専用）
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
