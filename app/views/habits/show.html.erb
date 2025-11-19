@@ -7,7 +7,7 @@
 
       <p class="text-center font-bold text-2xl text-gray-700 mb-3">
         <span class="font-semibold">頻度：</span>
-        <%= @habit.frequency %>
+        <%= t("activerecord.attributes.habit.frequency_values.#{@habit.frequency}") %>
       </p>
 
       <div class="flex ml-65 mt-15 space-x-3">

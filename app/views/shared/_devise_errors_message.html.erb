@@ -1,0 +1,20 @@
+<!-- devise専用のエラーメッセージ -->
+<% if defined?(resource) && resource.errors.any? %>
+  <div class="bg-red-50 border-2 border-red-300 text-red-700 rounded-md px-4 py-3 mb-5">
+    <div class="flex items-center">
+
+      <div class="flex-1">
+
+        <p class="font-semibold">
+          入力内容に誤りがあります。(<%= resource.errors.count %>件)
+        </p>
+
+        <ul class="mt-2 list-disc list-inside text-sm">
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

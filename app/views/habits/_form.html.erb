@@ -5,8 +5,8 @@
   </div>
 
   <div class="mb-5">
-    <%= f.label :frequency, "習慣頻度", class: "block text-gray font-bold mb-1" %>
-    <%= f.select :frequency, Habit.frequencies.keys.map { |k| [k.humanize, k] }, {}, class: "w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" %>
+    <%= f.label :frequency, "頻度", class: "block text-gray font-bold mb-1" %>
+    <%= f.select :frequency, Habit.frequencies.keys.map { |k| [t("activerecord.attributes.habit.frequency_values.#{k}"), k] }, {}, class: "w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" %>
   </div>
 
   <div class="flex justify-end mt-3 mb-5">

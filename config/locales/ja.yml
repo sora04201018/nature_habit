@@ -1,5 +1,21 @@
 ja:
   activerecord:
+    models:
+      user: "ユーザー"
+      habit: "習慣"
+    attributes:
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      habit:
+        title: "タイトル"
+        frequency: "頻度"
+        frequency_values: # 頻度のenum翻訳
+          daily: "毎日"
+          three_times_week: "週に3回"
+          once_a_week: "週に1回"
     errors:
       messages:
         record_invalid: "入力にエラーがあります"
@@ -12,4 +28,3 @@ ja:
       user:
         signed_up: "アカウント登録が完了しました。"
         updated: "アカウント情報を更新しました。"
-        
