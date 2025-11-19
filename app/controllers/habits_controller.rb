@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user! # ログインしているユーザーのみ
-  before_action :set_habits, only: %i[ show edit update ]
+  before_action :set_habits, only: %i[ show edit update destroy ]
 
   def index
     @habits = current_user.habits.order(created_at: :desc)
@@ -31,6 +31,11 @@ class HabitsController < ApplicationController
     end
   end
 
+  def destroy
+    @habit.destroy!
+    redirect_to habits_path, notice: "習慣を削除しました", status: :see_other
+  end
+
   private
 
   def habit_params
@@ -38,6 +43,6 @@ class HabitsController < ApplicationController
   end
 
   def set_habits
-  @habit = current_user.habits.find_by(id: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
+    @habit = current_user.habits.find_by(id: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
   end
 end

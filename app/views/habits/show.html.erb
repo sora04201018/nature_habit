@@ -12,7 +12,7 @@
 
       <div class="flex ml-65 mt-15 space-x-3">
         <%= link_to "編集", edit_habit_path(@habit), class: "bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-3 rounded-lg shadow-md transition" %>
-        <%= link_to "削除", "#", class: "bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded-lg shadow-md transition" %>
+        <%= link_to "削除", habit_path(@habit), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" }, class: "bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded-lg shadow-md transition" %>
       </div>
     </div>
   </div>
