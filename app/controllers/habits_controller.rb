@@ -18,6 +18,7 @@ class HabitsController < ApplicationController
     if @habit.update(habit_params)
       redirect_to habit_path, notice: "習慣を更新しました"
     else
+      flash.now[:alert] = "習慣の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
@@ -27,6 +28,7 @@ class HabitsController < ApplicationController
     if @habit.save
       redirect_to dashboard_path, notice: "習慣を作成しました"
     else
+      flash.now[:alert] = "習慣の作成に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end

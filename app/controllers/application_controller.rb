@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :user_signed_in_root 
 
   protected
 
@@ -16,6 +17,13 @@ class ApplicationController < ActionController::Base
   # ログイン後の遷移先を指定
   def after_sign_in_path_for(resource_or_scope)
     dashboard_path
+  end
+
+  # ログイン状態の場合、ルートではなくダッシュボードに遷移
+  def user_signed_in_root
+    if user_signed_in? && request.path == root_path
+      redirect_to dashboard_path
+    end
   end
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
