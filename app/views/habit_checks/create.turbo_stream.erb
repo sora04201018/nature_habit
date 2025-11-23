@@ -1,0 +1,6 @@
+<!-- createアクションのturbo_stream -->
+<turbo-stream target="habit_card_<%= @habit.id %>" action="replace">
+  <template>
+    <%= render partial: "habits/habit_card", formats: [:html], locals: { habit: @habit, week_dates: @week_dates, checks_by_habit: @checks_by_habit } %>
+  </template>
+</turbo-stream>

@@ -1,0 +1,29 @@
+<div id="habit_card_<%= habit.id %>" class="border border-green-500 rounded-lg p-4 shadow-sm hover:shadow-lg">
+  <h4 class="font-semibold text-lg text-gray-800 mb-2">🌱 <%= habit.title %></h4>
+  <p class="text-sm text-gray-500 mb-4">頻度: <%= t("activerecord.attributes.habit.frequency_values.#{habit.frequency}") %></p>
+
+  <div class="flex gap-3 items-center">
+    <!-- １週間の日付情報を一つずつdateに入れてdoで回す -->
+    <% week_dates.each do |date| %>
+      <div class="flex flex-col items-center text-sm">
+        <!-- 取り出した日付をstrftimeを使って、xx/xx日という形に変換(%m/%d) -->
+        <div class="mb-1 text-xs text-gray-500"><%= date.strftime("%m/%d") %></div>
+
+        <!-- any?メソッドを使って、取り出したdateがchecked_onにあるかどうかを検証➡︎変数checkedに格納 -->
+        <% checked = (checks_by_habit[habit.id] || []).any? { |c| c.checked_on == date } %>
+
+        <!-- 変数checkedを使って条件分岐。trueなら✓をfalseなら○を出力 -->
+        <% if checked %>
+          <% check = (checks_by_habit[habit.id] || []).find { |c| c.checked_on == date } %>
+          <%= button_to habit_habit_check_path(habit, check), method: :delete, data: { turbo_stream: true }, class: "px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600" do %>
+            ✓
+          <% end %>
+        <% else %>
+          <%= button_to habit_habit_checks_path(habit), method: :post, params: { checked_on: date }, data: { turbo_stream: true }, class: "px-2 py-1 bg-gray-200 rounded text-xs hover:bg-gray-300" do %>
+            ○
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

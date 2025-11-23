@@ -11,7 +11,7 @@
     </nav>
   </aside>
 
-  <!-- 🌱 メインコンテンツ -->
+  <!-- メインコンテンツ -->
   <main class="flex-1 p-10">
     <h2 class="text-2xl font-bold text-gray-700 mb-6">🌱ようこそ、<%= current_user.name %> さん！🌱</h2>
 
@@ -20,14 +20,18 @@
       <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
         <div class="bg-green-500 h-4 rounded-full" style="width: 75%;"></div>
       </div>
-      <p class="text-gray-600 mb-6">75% 達成 🎉</p>
+      <p class="text-gray-600 mb-6">75% 達成 🎉</p> 
+    </div>
 
-      <h3 class="text-lg font-semibold mb-2 text-gray-700">あなたの習慣一覧</h3>
-      <ul class="list-disc list-inside text-gray-600">
-        <li>朝散歩する</li>
-        <li>水を2L飲む</li>
-        <li>読書30分</li>
-      </ul>
+    <!-- 習慣情報をダッシュボードに表示 -->
+    <div class="mt-5 bg-white shadow-lg rounded-lg shadow p-6 border-1 border-green-300 hover:shadow-xl">
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">あなたの今週の習慣</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <% @habits.each do |habit| %>
+          <%= render "habits/habit_card", habit: habit, week_dates: @week_dates, checks_by_habit: @checks_by_habit %>
+        <% end %>
+      </div>
     </div>
   </main>
 </div>
