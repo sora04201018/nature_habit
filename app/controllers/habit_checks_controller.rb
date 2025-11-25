@@ -14,7 +14,7 @@ class HabitChecksController < ApplicationController
 
       # turbo_stream(非同期)と同期処理のレスポンス
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "完了を記録しました" }
         format.html { redirect_back fallback_location: dashboard_path, notice: "完了を記録しました" }
       end
     else
@@ -33,7 +33,7 @@ class HabitChecksController < ApplicationController
     set_checks_by_habit # その習慣の最新の１週間分のhabit_checks情報を持ってきて表示
 
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "完了を取り消しました" }
       format.html { redirect_back fallback_location: dashboard_path, notice: "完了を取り消しました" }
     end
   end
