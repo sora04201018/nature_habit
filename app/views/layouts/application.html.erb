@@ -24,6 +24,9 @@
     <!-- フラッシュメッセージを挿入 -->
     <%= render 'shared/flash_message' %>
 
+    <!-- turbo_stream用flash_messageを表示 -->
+    <div id="flash-message"></div>
+
     <%= yield %> <!-- 各viewが差し込まれる -->
 
     <!-- フッター挿入-->
