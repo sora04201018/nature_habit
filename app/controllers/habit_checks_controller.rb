@@ -4,6 +4,7 @@ class HabitChecksController < ApplicationController
   before_action :set_week_dates
 
   def create
+    @week_start = Date.current.beginning_of_week(:monday)
     # クエリパラメーターで[:checked_on]を取得→三項演算子で条件分岐
     date = params[:checked_on].present? ? Date.parse(params[:checked_on]) : Date.current
     @habit_check = @habit.habit_checks.build(user: current_user, checked_on: date)
@@ -27,6 +28,7 @@ class HabitChecksController < ApplicationController
 
 
   def destroy
+    @week_start = Date.current.beginning_of_week(:monday)
     @habit_check = @habit.habit_checks.find(params[:id])
     @habit_check.destroy
 
