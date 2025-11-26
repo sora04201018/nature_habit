@@ -16,4 +16,28 @@ class Habit < ApplicationRecord
   def checks_for_week(user, week_start)
     habit_checks.where(user: user, checked_on: week_start..(week_start + 6.days)).pluck(:checked_on)
   end
+
+  # 達成率を定義するメソッド(frequencyのenumによって達成目標数を分岐)
+  def weekly_target
+    case frequency
+
+    when "daily" # 毎日→7回
+      7
+    when "three_times_week" # 週に3回→3回
+      3
+    when "once_a_week" # 週に1回→1回
+      1
+    else # デフォルト(毎日)
+      7
+    end
+  end
+
+  # 達成率計算メソッド(データ計算などはモデルに書く)
+  def achievement_rate(user, week_start)
+    achievement_count = habit_checks.where(user: user, checked_on: week_start..(week_start + 6.days)).count
+    target = weekly_target
+
+    # roundメソッドで小数点を四捨五入切り捨て
+    ((achievement_count.to_f / target) * 100).round
+  end
 end

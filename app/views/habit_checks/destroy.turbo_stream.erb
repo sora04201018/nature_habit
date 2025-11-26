@@ -5,8 +5,16 @@
   </template>
 </turbo-stream>
 
+<!-- turbo_stream用フラッシュメッセージ -->
 <turbo-stream action="append" target="flash-message">
   <template>
     <%= render partial: "shared/flash_message", locals: { notice: flash.now[:notice], alert: flash.now[:alert] }, formats: [:html] %>
+  </template>
+</turbo-stream>
+
+<!-- 達成率もチェック同様、非同期で反映・更新 -->
+<turbo-stream action="replace" target="achievement-block">
+  <template>
+    <%= render partial: "dashboard/achievement_block", formats: [:html], locals: { habits: current_user.habits, week_start: @week_start } %>
   </template>
 </turbo-stream>
