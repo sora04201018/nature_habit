@@ -3,10 +3,9 @@
   <!--  サイドバー -->
   <aside class="w-1/6 bg-white shadow-md p-6 border-1 border-green-300 flex flex-col">
     <nav class="space-y-10 flex-grow">
-      <%= link_to "ダッシュボード", dashboard_path, class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "➕新しい習慣", new_habit_path, class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "習慣一覧", habits_path, class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
-      <%= link_to "マイページ", "#", class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "マイページ", mypage_path(@user), class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "設定", "#", class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
     </nav>
   </aside>
