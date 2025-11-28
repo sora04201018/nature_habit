@@ -4,8 +4,13 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   # devise用ルート（user認証関係）
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # マイページ用ルート
+  get "mypage", to: "users#show"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
