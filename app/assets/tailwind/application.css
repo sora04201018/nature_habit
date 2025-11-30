@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* カレンダーを横幅いっぱいに広げるようレイアウトを強制的に整える */
+.simple-calendar table {
+    @apply w-full table-fixed;
+}
+
+  .simple-calendar th,
+  .simple-calendar td {
+    @apply w-[14.28%];
+  }
