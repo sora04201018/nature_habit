@@ -65,3 +65,6 @@ gem "devise"
 # i18n導入
 gem "rails-i18n"
 gem "devise-i18n"
+
+# カレンダー機能
+gem "simple_calendar"
