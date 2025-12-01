@@ -1,5 +1,5 @@
 <!-- 達成率差し込み用(turbo_stream用) -->
-<div id="achievement-block" class="border-1 border-green-300 rounded-lg shadow shadow-lg bg-white mb-5 hover:shadow-xl p-6">
+<div id="achievement-block" class="border border-green-300 rounded-lg shadow-lg bg-white mb-5 hover:shadow-xl p-6">
   <h3 class="text-lg font-semibold mb-2 text-gray-700">あなたの達成状況</h3>
   <% habits.each do |habit| %>
 
@@ -8,7 +8,7 @@
 
       <div class="w-full h-4 bg-gray-100 rounded-full overflow-hidden mb-2">
         <!-- 達成率バーをグラデーションで表示 -->
-        <div class="h-4 rounded-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500" style="width: <%= habit.achievement_rate(current_user, week_start) %>%;"></div>
+        <div class="h-4 rounded-full bg-linear-to-r from-green-400 to-green-600 transition-all duration-500" style="width: <%= habit.achievement_rate(current_user, week_start) %>%;"></div>
       </div>
 
       <p class="text-sm text-gray-600">達成率：<%= habit.achievement_rate(current_user, week_start) %>%</p>
