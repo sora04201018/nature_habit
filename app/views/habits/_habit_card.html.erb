@@ -2,10 +2,10 @@
   <h4 class="font-semibold text-lg text-gray-800 mb-2">🌱 <%= habit.title %></h4>
   <p class="text-sm text-gray-500 mb-4">頻度: <%= t("activerecord.attributes.habit.frequency_values.#{habit.frequency}") %></p>
 
-  <div class="flex gap-3 items-center">
+  <div class="flex gap-2 items-center">
     <!-- １週間の日付情報を一つずつdateに入れてdoで回す -->
     <% week_dates.each do |date| %>
-      <div class="flex flex-col items-center text-sm">
+      <div class="flex flex-col items-center text-sm w-[42px]">
         <!-- 取り出した日付をstrftimeを使って、xx/xx日という形に変換(%m/%d) -->
         <div class="mb-1 text-xs text-gray-500"><%= date.strftime("%m/%d") %></div>
 
