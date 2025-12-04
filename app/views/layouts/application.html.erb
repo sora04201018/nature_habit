@@ -18,7 +18,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen flex flex-col w-screen bg-[url('assets/NatureHabit.jpeg')] bg-cover bg-center bg-no-repeat"> <!-- アプリケーション全体のレイアウト -->
+  <body class="min-h-screen flex flex-col w-screen bg-cover bg-center bg-no-repeat" style="background-image: url('<%= asset_path("NatureHabit.jpeg") %>');"> <!-- アプリケーション全体のレイアウト -->
     <!-- ヘッダー挿入 -->
     <%= render 'shared/header' %>
     <!-- フラッシュメッセージを挿入 -->
