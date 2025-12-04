@@ -9,3 +9,13 @@
   .simple-calendar td {
     @apply w-[14.28%];
   }
+
+  /* ホーム画面アニメーション */
+  @layer components {
+    .fade-in-up {
+      @apply opacity-0 translate-y-4 transition-all duration-1200 ease-in-out;
+    }
+    .fade-in-up.show {
+      @apply opacity-100 translate-y-0;
+    }
+  }

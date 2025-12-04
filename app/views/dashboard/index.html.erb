@@ -1,12 +1,12 @@
 <!--  メイン全体（左サイドバー + 右メインコンテンツ） -->
 <div class="flex flex-1 min-h-screen"> <!-- pt-20でヘッダー高さ分の余白を確保 -->
   <!--  サイドバー -->
-  <aside class="w-1/6 bg-white shadow-md p-6 border border-green-300 flex flex-col">
+  <aside class="w-1/6 bg-amber-100/90 shadow-md p-6 flex flex-col">
     <nav class="space-y-10 grow">
-      <%= link_to "➕新しい習慣", new_habit_path, class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
-      <%= link_to "習慣一覧", habits_path, class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
-      <%= link_to "マイページ", mypage_path(@user), class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
-      <%= link_to "マイカレンダー", calendar_path(@user), class: "block bg-green-300 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "➕新しい習慣", new_habit_path, class: "block bg-white border border-green-600 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "習慣一覧", habits_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "マイページ", mypage_path(@user), class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "マイカレンダー", calendar_path(@user), class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
     </nav>
   </aside>
 
@@ -20,7 +20,7 @@
     <% end %>
 
     <!-- 習慣情報をダッシュボードに表示 -->
-    <div class="mt-5 bg-white shadow-lg rounded-lg p-6 border border-green-300 hover:shadow-xl">
+    <div class="mt-5 bg-amber-100/90 shadow-lg rounded-lg p-6 border border-green-300 hover:shadow-xl">
       <h3 class="text-lg font-semibold mb-2 text-gray-700">あなたの今週の習慣</h3>
 
       <!-- 習慣を登録している時と、していないときで表示を分岐 -->
