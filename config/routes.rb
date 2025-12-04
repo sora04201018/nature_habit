@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   # ダッシュボード
   get "dashboard", to: "dashboard#index"
 
+  # カレンダー
+  get "calendar", to: "calendar#index"
+
   # habitsルート
   resources :habits, only: %i[ index new show edit create update destroy ] do
     resources :habit_checks, only: %i[ create destroy ] # habits_checksルート
