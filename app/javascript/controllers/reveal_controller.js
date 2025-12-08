@@ -20,4 +20,3 @@ export default class extends Controller {
     this.itemTargets.forEach((el) => observer.observe(el))
   }
 }
-

@@ -11,4 +11,27 @@
           class: "inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow" %>
     </div>
   </div>
+
+<!-- バッジ一覧 -->
+  <h3 class="text-lg font-semibold mb-2">🏅 獲得バッジ</h3>
+  <div class="flex flex-wrap gap-3">
+    <% @user.badges.order(threshold: :asc).each do |badge| %>
+      <div class="flex items-center gap-2 bg-white border p-3 rounded shadow">
+        <% if badge.icon.present? %>
+          <%= image_tag badge.icon, class:"w-8 h-8 rounded-full" %>
+        <% else %>
+        <!-- アイコンがなければ代替表示 -->
+        <span class="w-8 h-8 flex items-center justify-center rounded bg-green-200">🏅</span>
+        <% end %>
+
+        <div class="font-semibold"><%= badge.name %></div>
+        <div class="text-xs text-gray-500"><%= badge.description %></div>
+      </div>
+
+    <% end %>
+
+    <% if @user.badges.empty? %>
+      <p class="text-sm text-gray-500">まだバッジがありません。達成を重ねて獲得しましょう！</p>
+    <% end %>
+  </div>
 </div>

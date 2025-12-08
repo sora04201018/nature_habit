@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  user: one        # users.yml の one を参照
+  badge: one       # badges.yml の one を参照
+  awarded_at: <%= Time.current %>
+
+two:
+  user: two        # users.yml の two を参照
+  badge: two       # badges.yml の two を参照
+  awarded_at: <%= Time.current %>
+  

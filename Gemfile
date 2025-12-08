@@ -68,3 +68,6 @@ gem "devise-i18n"
 
 # カレンダー機能
 gem "simple_calendar"
+
+# cron実行のため
+gem "whenever", require: false
