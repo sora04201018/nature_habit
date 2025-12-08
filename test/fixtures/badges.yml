@@ -7,7 +7,7 @@
 one:
   name: "テストバッジ1"
   description: "テスト用のバッジです"
-  threshold: 1
+  threshold: 5
   icon: "badge_test1.png"
 
 two:
@@ -15,4 +15,4 @@ two:
   description: "テスト用のバッジです"
   threshold: 10
   icon: "badge_test2.png"
-  
+
