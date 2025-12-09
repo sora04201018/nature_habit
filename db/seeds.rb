@@ -13,9 +13,12 @@ Badge.destroy_all # 重複するバッジがないように最初に初期化
 
 # バッジの種類
 Badge.create!([
-  { name: "駆け出しNature", description: "総達成回数3回", threshold: 3, icon: "Nature_budge01.jpeg" },
-  { name: "中級Nature", description: "総達成回数10回", threshold: 10, icon: "Nature_budge02.jpeg" },
-  { name: "上級Nature", description: "総達成回数15回", threshold: 15, icon: "Nature_budge03.jpeg" }
+  { name: "駆け出しNature", description: "総達成回数3回", threshold: 3, icon: "Nature_badge01.jpeg" },
+  { name: "見習いNature", description: "総達成回数10回", threshold: 10, icon: "Nature_badge02.jpeg" },
+  { name: "中級Nature", description: "総達成回数20回", threshold: 20, icon: "Nature_badge03.jpeg" },
+  { name: "上級Nature", description: "総達成回数30回", threshold: 30, icon: "Nature_badge04.jpeg" },
+  { name: "玄人Nature", description: "総達成回数40回", threshold: 40, icon: "Nature_badge05.jpeg" },
+  { name: "達人Nature", description: "総達成回数50回", threshold: 50, icon: "Nature_badge06.jpeg" }
 ])
 
 puts "Badges created!"
