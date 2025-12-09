@@ -8,6 +8,12 @@ fi
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   ./bin/rails db:prepare
+
+  echo "Running db:seed..."
+  ./bin/rails db:seed
+
+  echo "Assigning badges..."
+  ./bin/rails badges:assign_all
 fi
 
 exec "${@}"
