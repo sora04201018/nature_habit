@@ -9,16 +9,23 @@
 #   end
 
 # 個々のバッジデータをseedで管理
-Badge.destroy_all # 重複するバッジがないように最初に初期化
-
-# バッジの種類
-Badge.create!([
+# バッジを安全に追加する（既存バッジは残す）
+badges = [
   { name: "駆け出しNature", description: "総達成回数3回", threshold: 3, icon: "Nature_badge01.jpeg" },
   { name: "見習いNature", description: "総達成回数10回", threshold: 10, icon: "Nature_badge02.jpeg" },
   { name: "中級Nature", description: "総達成回数20回", threshold: 20, icon: "Nature_badge03.jpeg" },
   { name: "上級Nature", description: "総達成回数30回", threshold: 30, icon: "Nature_badge04.jpeg" },
   { name: "玄人Nature", description: "総達成回数40回", threshold: 40, icon: "Nature_badge05.jpeg" },
   { name: "達人Nature", description: "総達成回数50回", threshold: 50, icon: "Nature_badge06.jpeg" }
-])
+]
 
-puts "Badges created!"
+badges.each do |badge_attrs|
+  # find_or_create_by を使うと、既存のバッジは残る
+  Badge.find_or_create_by!(name: badge_attrs[:name]) do |badge|
+    badge.description = badge_attrs[:description]
+    badge.threshold = badge_attrs[:threshold]
+    badge.icon = badge_attrs[:icon]
+  end
+end
+
+puts "Badges seeded successfully!"
