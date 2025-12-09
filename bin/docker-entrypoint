@@ -9,11 +9,11 @@ fi
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   ./bin/rails db:prepare
 
-  echo "Running db:seed..."
+  echo "Running db:seed..."  # 本番環境立ち上げの際に　db:seedでseed反映
   ./bin/rails db:seed
 
   echo "Assigning badges..."
-  ./bin/rails badges:assign_all
+  ./bin/rails badges:assign_all  # rakeタスクbadgesを反映
 fi
 
 exec "${@}"
