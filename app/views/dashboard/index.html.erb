@@ -1,8 +1,8 @@
 <!--  メイン全体（左サイドバー + 右メインコンテンツ） -->
-<div class="flex flex-1 min-h-screen"> <!-- pt-20でヘッダー高さ分の余白を確保 -->
+<div class="flex flex-col lg:flex-row flex-1 min-h-screen"> <!-- pt-20でヘッダー高さ分の余白を確保 -->
   <!--  サイドバー -->
-  <aside class="w-1/6 bg-white shadow-md p-6 flex flex-col">
-    <nav class="space-y-10 grow">
+  <aside class="w-full lg:w-1/6 bg-white shadow-md p-4 lg:p-6 flex flex-col">
+    <nav class="flex flex-wrap gap-3 lg:flex-col lg:space-y-6 grow">
       <%= link_to "➕新しい習慣", new_habit_path, class: "block bg-white border border-green-600 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "習慣一覧", habits_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "マイページ", mypage_path(@user), class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
@@ -11,7 +11,7 @@
   </aside>
 
   <!-- メインコンテンツ -->
-  <main class="flex-1 p-10">
+  <main class="flex-1 p-4 md:p-6 lg:p-10">
     <h2 class="text-2xl font-bold text-gray-700 mb-6">🌱ようこそ、<%= current_user.name %> さん！🌱</h2>
 
     <!-- それぞれの習慣達成率をdoで回して、ここに表示 -->
