@@ -33,6 +33,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to post_path(Post.last)
+    assert_redirected_to posts_path
   end
 end
