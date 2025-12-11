@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     resources :habit_checks, only: %i[ create destroy ] # habits_checksルート
   end
 
+  # postsルート
+  resources :posts, only: %i[ index show new edit update create destroy ]
+
   # Github Actionsでバッジ付与のタスクを自動で反映させるためのルート（Github Actionsで処理を叩かせる）
   # internal_badge_assign_path
   namespace :internal do
