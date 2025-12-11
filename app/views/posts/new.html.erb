@@ -1,0 +1,26 @@
+<div class="max-w-lg mt-5 mb-5 mx-auto bg-white rounded-xl shadow p-5">
+  <h1 class=" text-green-700 text-2xl font-bold mb-4">🌿 自然を投稿する 🌿</h1>
+
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :title, "タイトル", class: "block font-semibold" %>
+      <%= f.text_field :title, class: "w-full border rounded p-2", placeholder: "滝を見に行った！・夜景を見に行った！などなど" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :body, "感想", class: "block font-semibold" %>
+      <%= f.text_area :body, class: "w-full border rounded p-2", rows: 5, placeholder: "自然スポットに行ってみての感想(滝がめっちゃ綺麗だった。夜景の星空が輝いていた。などなど)" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :image, "画像", class: "block font-semibold" %>
+      <%= f.file_field :image, accept: "image/*" %>
+      <p class="text-sm text-gray-600">画像は一枚のみ添付できます！</br>
+      是非ともその日の自然写真を投稿し、自然活動を共有してみましょう！</p>
+    </div>
+
+    <%= f.submit "投稿する", class: "w-full bg-green-500 text-white py-2 rounded hover:bg-green-700" %>
+
+    <%= link_to "一覧に戻る", posts_path, class: "w-full block text-center mt-3 bg-gray-300 text-gray-700 py-2 rounded hover:bg-gray-400" %>
+  <% end %>
+</div>
