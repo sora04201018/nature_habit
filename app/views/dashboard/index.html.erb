@@ -4,7 +4,8 @@
   <aside class="w-full lg:w-1/6 bg-white shadow-md p-4 lg:p-6 flex flex-col">
     <nav class="flex flex-wrap gap-3 lg:flex-col lg:space-y-6 grow">
       <%= link_to "➕新しい習慣", new_habit_path, class: "block bg-white border border-green-600 text-center font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
-      <%= link_to "習慣一覧", habits_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "マイ習慣", habits_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
+      <%= link_to "みんなの習慣", public_habit_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "みんなの自然", posts_path, class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "マイページ", mypage_path(@user), class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>
       <%= link_to "マイカレンダー", calendar_path(@user), class: "block bg-white text-center border border-green-600 font-medium hover:text-green-600 font-semibold py-3 px-3 rounded-lg shadow-md transition" %>

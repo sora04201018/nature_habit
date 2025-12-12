@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     resources :habit_checks, only: %i[ create destroy ] # habits_checksルート
   end
 
+  # 習慣公開ルート（みんなの習慣）
+
+  get "public_habit", to: "habits#public_index", as: :public_habit
+
   # postsルート
   resources :posts, only: %i[ index show new edit update create destroy ]
 

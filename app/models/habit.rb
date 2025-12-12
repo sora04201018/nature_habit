@@ -7,6 +7,9 @@ class Habit < ApplicationRecord
   # frequency 頻度enum管理(毎日・週に3回・週に1回)
   enum frequency: { daily: 0, three_times_week: 1, once_a_week: 2 }
 
+  # 公開されている習慣のみを取得する scope（ビューやコントローラで使う）。 publicly_visibleメソッドをシンボルで定義。
+  scope :publicly_visible, -> { where(is_public: true) }
+
   # 特定の習慣を特定のユーザーが特定の日にチェックしたかを返すメソッド
   def checked_on?(user, date)
     habit_checks.exists?(user: user, checked_on: date)
