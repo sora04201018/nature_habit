@@ -7,11 +7,13 @@
 one:
   title: "朝の散歩"
   frequency: daily
+  is_public: true
   user: one
 # column: value
 #
 two:
   title: "植物の水やり"
   frequency: once_a_week
+  is_public: false
   user: two
 # column: value

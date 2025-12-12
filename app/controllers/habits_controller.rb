@@ -1,6 +1,12 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user! # ログインしているユーザーのみ
-  before_action :set_habits, only: %i[ show edit update destroy ]
+  before_action :set_habits, only: %i[ edit update destroy ]
+
+  # 習慣公開処理
+  def public_index
+    @habits = Habit.publicly_visible.includes(:user).order(created_at: :desc)
+    @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
+  end
 
   def index
     @habits = current_user.habits.order(created_at: :desc)
@@ -10,7 +16,10 @@ class HabitsController < ApplicationController
     @habit = current_user.habits.build
   end
 
-  def show; end
+  def show
+    @habit = Habit.find_by(id: params[:id])
+    @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
+  end
 
   def edit; end
 
@@ -41,7 +50,7 @@ class HabitsController < ApplicationController
   private
 
   def habit_params
-    params.require(:habit).permit(:title, :frequency, :start_date)
+    params.require(:habit).permit(:title, :frequency, :start_date, :is_public)
   end
 
   def set_habits

@@ -1,9 +1,9 @@
 <header class="w-full bg-white shadow-md py-4 px-8 flex justify-between items-center">
   <div class="text-2xl font-bold text-green-700">
     <% if user_signed_in? %>
-      <%= link_to "NatureHabit", dashboard_path, class: "hover:text-green-600, transition" %>
+      <%= link_to "NatureHabit", dashboard_path, class: "hover:text-green-500 transition" %>
     <% else %>
-      <%= link_to "NatureHabit", root_path, class: "hover:text-green-600 transition" %>
+      <%= link_to "NatureHabit", root_path, class: "hover:text-green-500 transition" %>
     <% end %>
   </div>
 
