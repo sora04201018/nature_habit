@@ -3,11 +3,9 @@
 one:
   title: "MyString"
   body: "MyText"
-  image: "badge_test1.jpeg"
   user: one
 
 two:
   title: "MyString"
   body: "MyText"
-  image: "badge_test2.jpeg"
   user: two
