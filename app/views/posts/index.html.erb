@@ -31,6 +31,11 @@
 
         <%= link_to "詳しく見る", post_path(post),
             class: "inline-block text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition" %>
+
+        <div class="flex justify-end gap-1 text-gray-500 text-lg mt-2">
+            <span>💬</span>
+            <span><%= post.comments.count %></span>
+        </div>
       </div>
     <% end %>
   </div>

@@ -6,7 +6,7 @@
 </turbo-stream>
 
 <!-- turbo_stream用フラッシュメッセージ -->
-<turbo-stream action="append" target="flash-message">
+<turbo-stream action="append" target="flash_message">
   <template>
     <%= render partial: "shared/flash_message", locals: { notice: flash.now[:notice], alert: flash.now[:alert] }, formats: [:html] %>
   </template>

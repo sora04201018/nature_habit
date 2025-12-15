@@ -18,6 +18,7 @@ class HabitsController < ApplicationController
 
   def show
     @habit = Habit.find_by(id: params[:id])
+    @comments = @habit.comments.order(created_at: :desc) # コメント降順
     @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
   end
 

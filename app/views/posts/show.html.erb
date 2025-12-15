@@ -1,40 +1,57 @@
-<div class="max-w-lg mx-auto mt-10 bg-white mb-10 rounded-xl shadow p-6">
-  <!-- 投稿画像 -->
-  <% if @post.image.attached? %>
-    <%= image_tag @post.image, class: "w-full rounded-lg mb-4" %>
-  <% else %>
-    <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-      No Image
+<h1 class="pb-5 mt-10 text-center font-bold text-green-700 text-4xl">
+  🌱 投稿の詳細 🌱
+</h1>
+
+<div class="flex justify-center px-4 mb-16">
+  <div class="w-full max-w-2xl flex flex-col space-y-8">
+
+    <!-- 投稿カード -->
+    <div class="bg-white rounded-xl shadow p-6">
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image, class: "w-full rounded-lg mb-4" %>
+      <% end %>
+
+      <h1 class="text-2xl font-bold text-green-700 mb-2">
+        <%= @post.title %>
+      </h1>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <%= simple_format(@post.body) %>
+      </p>
+
+      <p class="text-sm text-gray-500 mt-3">
+        投稿者：<%= @post.user.name %>
+      </p>
+
+      <!-- コメント数 -->
+      <div class="flex justify-end mt-3">
+        <h3 class="text-sm font-bold text-gray-700">
+          <span id="comment_count">
+            💬 コメント（<%= @post.comments.count %>）
+          </span>
+        </h3>
+      </div>
     </div>
-  <% end %>
 
-  <!-- タイトル -->
-  <h1 class="text-2xl font-bold text-green-700 mb-2">
-    <%= @post.title %>
-  </h1>
+    <!-- コメントカード（投稿の下） -->
+    <div class="bg-white shadow-lg border border-gray-200 rounded-2xl p-6">
+      <h3 class="text-lg font-bold text-gray-700 mb-4">
+        コメント
+      </h3>
 
-  <!-- 本文 -->
-  <p class="text-gray-700 leading-relaxed mb-4">
-    <%= simple_format(@post.body) %>
-  </p>
+      <!-- コメントフォーム -->
+      <div id="comment_form" class="mb-6">
+        <%= render "comments/form", commentable: @post, comment: Comment.new %>
+      </div>
 
-  <!-- 投稿者情報（必要であれば） -->
-  <p class="text-sm text-gray-500 mb-4">
-    投稿者：<%= @post.user.name %>
-  </p>
+      <!-- コメント一覧 -->
+      <h3 class="text-lg font-bold text-gray-700 mt-2">
+        コメント一覧
+      </h3>
+      <div id="comments" class="space-y-4">
+        <%= render @comments %>
+      </div>
+    </div>
 
-  <!-- ボタン（編集・削除・一覧に戻る） -->
-  <div class="mt-4 flex justify-end space-x-4">
-    <% if @post.user == current_user %>
-      <%= link_to "編集", edit_post_path(@post),
-          class: "px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700" %>
-
-      <%= link_to "削除", post_path(@post),
-          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-          class: "px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600" %>
-    <% end %>
-
-    <%= link_to "一覧に戻る", posts_path,
-        class: "px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500" %>
   </div>
 </div>

@@ -1,0 +1,13 @@
+<%= turbo_stream.replace "flash_message" do %>
+  <div id="flash_message">
+    <%= render "shared/flash_message" %>
+  </div>
+<% end %>
+
+<%= turbo_stream.replace "comment_count" do %>
+  <span id="comment_count">
+    💬 コメント（<%= @commentable.comments.count %>）
+  </span>
+<% end %>
+
+<%= turbo_stream.remove dom_id(@comment) %>
