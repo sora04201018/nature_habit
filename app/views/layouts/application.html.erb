@@ -21,11 +21,12 @@
   <body class="min-h-screen flex flex-col w-screen bg-cover bg-center bg-white bg-no-repeat" style="background-image: url('<%= asset_path("NatureHabit.jpeg") %>');"> <!-- アプリケーション全体のレイアウト -->
     <!-- ヘッダー挿入 -->
     <%= render 'shared/header' %>
-    <!-- フラッシュメッセージを挿入 -->
-    <%= render 'shared/flash_message' %>
 
     <!-- turbo_stream用flash_messageを表示 -->
-    <div id="flash-message"></div>
+    <div id="flash_message">
+      <!-- フラッシュメッセージを挿入 -->
+      <%= render 'shared/flash_message' %>
+    </div>
 
     <main class="flex-1 bg-transparent">
     <%= yield %> <!-- 各viewが差し込まれる -->

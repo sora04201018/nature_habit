@@ -19,6 +19,12 @@ ja:
           daily: "毎日"
           three_times_week: "週に3回"
           once_a_week: "週に1回"
+      post:
+        title: "タイトル"
+        body: "感想"
+        image: "画像"
+      comment:
+        body: "本文"
     errors:
       messages:
         record_invalid: "入力にエラーがあります"

@@ -1,6 +1,7 @@
 class Habit < ApplicationRecord
   belongs_to :user
   has_many :habit_checks, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy # as: :commentableでhabit.commentsを取得。
 
   validates :title, presence: true, length: { maximum: 100 }
 

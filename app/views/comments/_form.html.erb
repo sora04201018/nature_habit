@@ -1,0 +1,16 @@
+<div id="comment_form">
+  <%= form_with model: [commentable, comment], class: "mt-4" do |f| %>
+    <%= render "shared/errors_message", model: comment %>
+    <div class="mb-3">
+      <%= f.text_area :body,
+        rows: 3,
+        placeholder: "コメントを書く...",
+        class: "w-full rounded-lg border p-2 focus:ring-green-400 focus:border-green-400" %>
+      <p class="text-gray-500 text-sm">*500文字まで</p>
+    </div>
+
+    <%= f.submit "送信",
+      class: "w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition" %>
+  <% end %>
+</div>
+

@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# どうやらrenderでjobsが有料枠になっていそうなので、今後要検討。
+# どうやらrenderでjobsが有料枠になっていそうなので、今後要検討。→github actionsを利用する形に変更。
 # 出力先ログ
 set :output, "log/cron.log"
 # 環境

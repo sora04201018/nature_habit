@@ -1,10 +1,11 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include ActionDispatch::TestProcess::FixtureFile
+
   setup do
     @user = users(:one)
     sign_in @user
-
     @post = posts(:one)
   end
 
@@ -23,16 +24,22 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create post" do
+  test "should create post with image" do
     assert_difference("Post.count", 1) do
       post posts_path, params: {
         post: {
           title: "Test Title",
-          body: "Test Body"
+          body: "Test Body",
+          image: fixture_file_upload(
+            "test/fixtures/files/test.jpeg",
+            "image/jpeg"
+          )
         }
       }
     end
 
+    created_post = Post.last
+    assert created_post.image.attached?
     assert_redirected_to posts_path
   end
 end

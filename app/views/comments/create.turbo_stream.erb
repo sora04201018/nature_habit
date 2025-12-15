@@ -1,0 +1,27 @@
+<%= turbo_stream.replace "flash_message" do %>
+  <div id="flash_message">
+    <%= render "shared/flash_message" %>
+  </div>
+<% end %>
+
+<% if @comment.errors.any? %>
+  <!-- バリデーションエラー時 -->
+  <%= turbo_stream.replace "comment_form",
+        partial: "comments/form",
+        locals: { commentable: @commentable, comment: @comment } %>
+<% else %>
+  <!-- 成功時 -->
+  <%= turbo_stream.replace "comment_count" do %>
+    <span id="comment_count">
+      💬 コメント（<%= @commentable.comments.count %>）
+    </span>
+  <% end %>
+
+  <%= turbo_stream.prepend "comments",
+        partial: "comments/comment",
+        locals: { comment: @comment } %>
+
+  <%= turbo_stream.replace "comment_form",
+        partial: "comments/form",
+        locals: { commentable: @commentable, comment: Comment.new } %>
+<% end %>
