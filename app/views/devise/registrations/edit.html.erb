@@ -1,6 +1,6 @@
-<div class="flex-grow flex items-center justify-center p-8">
-  <div class="w-full max-w-lg p-8">
-    <h1 class="text-4xl font-bold text-green-700 mb-10 text-center">🌱ユーザー情報編集🌱</h1>
+<div class="grow flex items-center justify-center p-4 sm:p-8">
+  <div class="w-full max-w-lg p-8 bg-white/70 shadow-lg rounded-3xl">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-700 mb-6 sm:mb-8 text-center">🌱ユーザー情報編集🌱</h1>
     <%= form_with model: resource, url: registration_path(resource_name), method: :put, local: true do |f| %> <%# resource_nameの引数渡す %>
       <%= render "shared/devise_errors_message", resource: resource %>
 
