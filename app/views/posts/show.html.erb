@@ -34,6 +34,13 @@
           </span>
         </h3>
       </div>
+
+      <div class="flex justify-end mt-3 gap-3">
+        <% if @post.user == current_user %>
+          <%= link_to "編集", edit_post_path(@post), class: "bg-green-500 text-white py-2 px-3 rounded hover:bg-green-700" %>
+          <%= link_to "削除", post_path(@post), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" }, class: "bg-red-500 text-white py-2 px-3 rounded hover:bg-red-700" %>
+        <% end %>
+      </div>
     </div>
 
     <!-- コメントカード（投稿の下） -->
