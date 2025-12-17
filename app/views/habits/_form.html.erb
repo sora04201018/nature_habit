@@ -1,12 +1,12 @@
 <%= form_with model: habit, local: true do |f| %>
   <div class="mb-5">
-    <%= f.label :title, "習慣タイトル", class: "block text-gray font-bold mb-1" %>
+    <%= f.label :title, "習慣タイトル(*必須)", class: "block text-gray font-bold mb-1" %>
     <%= f.text_field :title, class: "w-full border-2 border-green-500 p-2 rounded-lg focus:ring-2 focus:ring-green-600 focus:outline-none", placeholder: "「自然公園に行く」などなど" %>
     <p class="text-sm text-gray-500 mt-1">あなたが思う自然のことなら、どんなことでもOK!</p>
   </div>
 
   <div class="mb-5">
-    <%= f.label :frequency, "頻度", class: "block text-gray font-bold mb-1" %>
+    <%= f.label :frequency, "頻度(*必須)", class: "block text-gray font-bold mb-1" %>
     <%= f.select :frequency, Habit.frequencies.keys.map { |k| [t("activerecord.attributes.habit.frequency_values.#{k}"), k] }, {}, class: "w-full border-2 border-green-500 p-2 rounded-lg focus:ring-2 focus:ring-green-600 focus:outline-none" %>
     <p class="text-sm text-gray-500 mb-1">日常の些細な自然なら「毎日」をお出かけが必要なら「週に1回」など、習慣に合わせて頻度を選択してください。</p>
   </div>

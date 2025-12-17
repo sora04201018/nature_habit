@@ -12,5 +12,12 @@
     <%= f.submit "送信",
       class: "w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition" %>
   <% end %>
-</div>
 
+  <div class="flex text-center w-full mt-2">
+    <% if commentable.is_a?(Post) %>
+      <%= link_to "みんなの自然", posts_path, class:"w-full mb-5 bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition" %>
+    <% elsif commentable.is_a?(Habit) %>
+      <%= link_to "みんなの習慣", public_habit_path, class:"w-full mb-5 bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition" %>
+    <% end %>
+  </div>
+</div>

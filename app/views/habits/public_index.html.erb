@@ -18,9 +18,16 @@
             <div class="bg-green-500 h-3 rounded-full transition-all duration-500" style="width: <%= habit.achievement_rate(habit.user, @week_start) %>%;"></div>
           </div>
 
-          <div class="flex items-center gap-1 text-gray-500 text-sm mt-2">
-            <span>💬</span>
-            <span><%= habit.comments.count %></span>
+          <div class="flex justify-end text-base gap-2 mt-3">
+            <div class="text-green-800">
+              <span>💚</span>
+              <span><%= habit.likes.count %></span>
+            </div>
+
+            <div class="text-gray-700">
+              <span>💬</span>
+              <span><%= habit.comments.count %></span>
+            </div>
           </div>
 
         </div>
