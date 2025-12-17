@@ -23,8 +23,11 @@
         投稿者：<%= @post.user.name %>
       </p>
 
-      <!-- コメント数 -->
-      <div class="flex justify-end mt-3">
+      <div class="flex justify-between items-center mt-3">
+        <!-- いいね -->
+        <%= render "likes/like_button", likeable: @post %>
+
+        <!-- コメント数 -->
         <h3 class="text-sm font-bold text-gray-700">
           <span id="comment_count">
             💬 コメント（<%= @post.comments.count %>）
@@ -40,7 +43,7 @@
       </h3>
 
       <!-- コメントフォーム -->
-      <div id="comment_form" class="mb-6">
+      <div id="comment_form" class="mb-2">
         <%= render "comments/form", commentable: @post, comment: Comment.new %>
       </div>
 

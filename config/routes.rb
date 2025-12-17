@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :habits, only: %i[ index new show edit create update destroy ] do
     resources :habit_checks, only: %i[ create destroy ] # habits_checksルート
     resources :comments, only: %i[ create destroy ] # habits用commentsルート
+    resource :like, only: %i[ create destroy ] # habits用likesルート
   end
 
   # 習慣公開ルート（みんなの習慣）
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   # postsルート
   resources :posts, only: %i[ index show new edit update create destroy ] do
     resources :comments, only: %i[ create destroy ] # posts用commentsルート
+    resource :like, only: %i[ create destroy ] # posts用likesルート
   end
 
   # Github Actionsでバッジ付与のタスクを自動で反映させるためのルート（Github Actionsで処理を叩かせる）

@@ -1,0 +1,14 @@
+<div id="like_button_<%= likeable.id %>">
+  <% if current_user.likes.exists?(likeable: likeable) %>
+    <%= button_to "💚 #{likeable.likes.count}",
+      polymorphic_path([likeable, :like]),
+      method: :delete,
+      data: { turbo_method: :delete },
+      class: "text-green-500 text-3xl hover:text-green-600" %>
+  <% else %>
+    <%= button_to "🤍 #{likeable.likes.count}",
+      polymorphic_path([likeable, :like]),
+      method: :post,
+      class: "text-gray-500 text-3xl hover:text-gray-600" %>
+  <% end %>
+</div>
