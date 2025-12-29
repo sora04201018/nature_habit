@@ -1,0 +1,50 @@
+@layer components {
+  /* Tagify 全体（枠線を強制上書き） */
+  .tagify {
+    border: 2px solid #22c55e !important; /* green-500 */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: white;
+  }
+
+  /* フォーカス時（フォームと統一） */
+  .tagify--focus {
+    border-color: #16a34a !important; /* green-600 */
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.3);
+  }
+
+  /* タグ本体 */
+  .tagify__tag > div {
+    background-color: #dcfce7; /* green-100 */
+    color: #166534;           /* green-800 */
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* × ボタン */
+  .tagify__tag__removeBtn {
+    color: #16a34a;
+  }
+
+  .tagify__tag__removeBtn:hover {
+    color: #14532d;
+  }
+
+  /* ドロップダウン */
+  .tagify__dropdown {
+    border: 1px solid #86efac;
+    border-radius: 0.75rem;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  .tagify__dropdown__item {
+    padding: 0.5rem 1rem;
+    color: #166534;
+  }
+
+  .tagify__dropdown__item--active {
+    background-color: #bbf7d0;
+  }
+}

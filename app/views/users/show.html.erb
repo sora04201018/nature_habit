@@ -10,9 +10,11 @@
     <p class="text-gray-600 mb-4">メールアドレス：<%= @user.email %></p>
 
     <!-- 編集ボタン -->
-    <div class="flex justify-end mt-4">
+    <div class="flex flex-col mt-4">
       <%= link_to "編集", edit_user_registration_path,
-          class: "inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow" %>
+          class: "inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow" %>
+      <%= link_to "ダッシュボードへ戻る", dashboard_path,
+          class: "inline-block w-full mt-2 text-center text-green-700 bg-white px-4 py-2 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition shadow" %>
     </div>
 
     <!-- 仕切り線 -->

@@ -11,6 +11,23 @@
     <p class="text-sm text-gray-500 mb-1">日常の些細な自然なら「毎日」をお出かけが必要なら「週に1回」など、習慣に合わせて頻度を選択してください。</p>
   </div>
 
+  <!-- カテゴリー選択 -->
+  <div class="mb-5">
+    <%= f.label :category_names, "カテゴリー", class: "text-gray font-bold mb-1"%>
+
+    <div data-controller="tag" data-tag-tags-value="<%= @categories.pluck(:name).to_json %>" data-tag-initial-value="<%= @category_json %>">
+      <%= f.text_field :category_names,
+        value: (@category_json if action_name == "edit"),
+        placeholder: "例：運動, 瞑想, 早起き",
+        class: "w-full border-2 border-green-500 p-2 rounded-lg"
+      %>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">
+      既存カテゴリーまたは新規作成
+    </p>
+  </div>
+
+  <!-- 公開設定 -->
   <div class="mt-5">
     <label class="block text-gray-700 font-bold mb-2">公開設定</label>
 
@@ -35,12 +52,13 @@
   </div>
 
   <div class="flex flex-col mt-3 mb-5">
-    <% if current_page?(new_habit_path) %>
-      <%= f.submit "登録", class: "w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition mb-3" %>
-      <%= link_to "ダッシュボードへ戻る", dashboard_path, class: "w-full text-center bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
-    <% else %>
+    <!-- persisted?でデータの状態で分岐する。（true=DB保存済み、false=未保存) -->
+    <% if habit.persisted? %>
       <%= f.submit "更新", class: "w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition mb-3" %>
       <%= link_to "詳細へ", habit_path(habit), class: "w-full text-center bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
+    <% else %>
+      <%= f.submit "登録", class: "w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition mb-3" %>
+      <%= link_to "ダッシュボードへ戻る", dashboard_path, class: "w-full text-center bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition" %>
     <% end %>
   </div>
 <% end %>
