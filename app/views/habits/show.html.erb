@@ -30,9 +30,20 @@
       </h2>
 
       <!-- 頻度 -->
-      <p class="text-center text-lg sm:text-xl font-semibold text-gray-700">
+      <p class="text-center text-lg sm:text-xl font-semibold text-gray-700 mt-1">
         <span class="text-green-800">頻度：</span>
         <%= t("activerecord.attributes.habit.frequency_values.#{@habit.frequency}") %>
+      </p>
+
+      <!-- カテゴリー -->
+      <p class="text-center text-lg sm:text-xl font-semibold mt-1">
+        <% if @habit.categories.any? %>
+          <% @habit.categories.each do |category| %>
+            <span class="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">
+              <%= category.name %>
+            </span>
+          <% end %>
+        <% end %>
       </p>
 
       <!-- 達成率 -->
@@ -45,8 +56,20 @@
           <div class="bg-green-500 h-3 rounded-full transition-all duration-500" style="width: <%= @habit.achievement_rate(@habit.user, @week_start) %>%;"></div>
         </div>
 
+      <div class="flex justify-between items-center mt-3">
+        <!-- いいね -->
+        <%= render "likes/like_button", likeable: @habit %>
+
+        <!-- コメント数 -->
+        <h3 class="text-sm font-bold text-gray-700">
+          <span id="comment_count">
+            💬 コメント（<%= @habit.comments.count %>）
+          </span>
+        </h3>
+      </div>
+
       <!-- ボタン -->
-      <div class="flex flex-col sm:flex-row justify-center gap-3 pt-4">
+      <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
         <% if @habit.user === current_user %>
           <%= link_to "編集", edit_habit_path(@habit),
                 class:"w-full sm:w-auto text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md transition" %>
@@ -58,18 +81,6 @@
           <%= link_to "マイ習慣に戻る", habits_path,
                 class:"w-full sm:w-auto text-center bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-5 rounded-lg shadow-md transition" %>
         <% end %>
-      </div>
-
-      <div class="flex justify-between items-center mt-2">
-        <!-- いいね -->
-        <%= render "likes/like_button", likeable: @habit %>
-
-        <!-- コメント数 -->
-        <h3 class="text-sm font-bold text-gray-700">
-          <span id="comment_count">
-            💬 コメント（<%= @habit.comments.count %>）
-          </span>
-        </h3>
       </div>
 
     </div>

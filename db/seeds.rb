@@ -29,3 +29,23 @@ badges.each do |badge_attrs|
 end
 
 puts "Badges seeded successfully!"
+
+
+# カテゴリー初期データ
+categories = [
+  "散歩",
+  "植物",
+  "滝",
+  "公園",
+  "山",
+  "海",
+  "朝活",
+  "瞑想",
+  "リラックス"
+]
+
+categories.each do |name|
+  Category.find_or_create_by!(name: name)
+end
+
+puts "Categories seeded successfully!"

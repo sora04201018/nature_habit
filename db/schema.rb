@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_16_015428) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_18_065027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_16_015428) do
     t.index ["threshold"], name: "index_badges_on_threshold"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -62,6 +69,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_16_015428) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "habit_categories", force: :cascade do |t|
+    t.bigint "habit_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_habit_categories_on_category_id"
+    t.index ["habit_id", "category_id"], name: "index_habit_categories_on_habit_id_and_category_id", unique: true
+    t.index ["habit_id"], name: "index_habit_categories_on_habit_id"
   end
 
   create_table "habit_checks", force: :cascade do |t|
@@ -134,6 +151,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_16_015428) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "habit_categories", "categories"
+  add_foreign_key "habit_categories", "habits"
   add_foreign_key "habit_checks", "habits"
   add_foreign_key "habit_checks", "users"
   add_foreign_key "habits", "users"

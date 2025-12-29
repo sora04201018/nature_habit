@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     resource :like, only: %i[ create destroy ] # posts用likesルート
   end
 
+  # rails側でカテゴリー一覧をJSONで返すためのルート（tagify使用しているため）
+  resources :categories, only: %i[ index ]
+
   # Github Actionsでバッジ付与のタスクを自動で反映させるためのルート（Github Actionsで処理を叩かせる）
   # internal_badge_assign_path
   namespace :internal do

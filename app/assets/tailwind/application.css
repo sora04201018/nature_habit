@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./tagify";
+@import "./tagify_custom";
 
 /* カレンダーを横幅いっぱいに広げるようレイアウトを強制的に整える */
 .simple-calendar table {

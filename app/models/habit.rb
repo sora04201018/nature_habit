@@ -3,6 +3,10 @@ class Habit < ApplicationRecord
   has_many :habit_checks, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy # as: :commentableでhabit.commentsを取得。
   has_many :likes, as: :likeable, dependent: :destroy # as: :likeableでhabit.likesを取得
+  has_many :habit_categories, dependent: :destroy
+  has_many :categories, through: :habit_categories
+
+  attr_accessor :category_names # カテゴリーの仮属性
 
   validates :title, presence: true, length: { maximum: 100 }
 
