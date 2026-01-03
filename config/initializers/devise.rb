@@ -27,9 +27,9 @@ Devise.setup do |config|
     }
 
   # LINE認証
-  # config.omniauth :line,
-  # ENV["LINE_CLIENT_ID"],
-  # ENV["LINE_CLIENT_SECRET"]
+  config.omniauth :line,
+    ENV["LINE_CLIENT_ID"],
+    ENV["LINE_CLIENT_SECRET"]
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.

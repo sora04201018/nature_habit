@@ -5,9 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback("Google")
   end
 
-  # def line
-  # callback("LINE")
-  # end
+  def line
+    callback("LINE")
+  end
 
   private
 
