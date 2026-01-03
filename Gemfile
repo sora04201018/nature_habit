@@ -71,3 +71,11 @@ gem "simple_calendar"
 
 # cron実行のため
 gem "whenever", require: false
+
+# SNSログインgem(google,LINE)
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-line"
+# OmniAuth CSRF対策（Rails7必須）
+gem "omniauth-rails_csrf_protection"
+gem "dotenv-rails"

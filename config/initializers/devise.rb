@@ -16,6 +16,21 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '402d4c38cb798ed8c25992cfb863bcca4cf41248d91e3ac83601884b89fa082d2a4bf0c87f5a61299dea8b21de7bfc94887855d0b8313e96536395eb14ce9af3'
 
+  # SNS認証
+  # Google認証
+  config.omniauth :google_oauth2,
+    ENV["GOOGLE_CLIENT_ID"],
+    ENV["GOOGLE_CLIENT_SECRET"],
+    {
+      access_type: "offline",
+      prompt: "select_account"
+    }
+
+  # LINE認証
+  # config.omniauth :line,
+  # ENV["LINE_CLIENT_ID"],
+  # ENV["LINE_CLIENT_SECRET"]
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
