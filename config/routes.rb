@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
   # devise用ルート（user認証関係）
   devise_for :users, controllers: {
-    registrations: "users/registrations"
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks" # SNS認証
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

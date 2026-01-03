@@ -27,5 +27,30 @@
         <%= f.submit "登録", class: "bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition" %>
       </div>
     <% end %>
+
+    <!-- または -->
+    <div class="flex items-center my-6">
+      <div class="grow border-t border-gray-300"></div>
+      <span class="mx-4 text-gray-500 text-sm">または</span>
+      <div class="grow border-t border-gray-300"></div>
+    </div>
+
+    <!-- SNS認証（Google・LINE） -->
+    <div class="mt-6 space-y-4">
+      <%= link_to user_google_oauth2_omniauth_authorize_path,
+        data: { turbo: false },
+        class: "flex items-center justify-center w-full border border-gray-300 bg-white py-3 rounded-lg font-medium shadow-sm hover:bg-gray-50 transition" do %>
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="w-5 h-5 mr-3">
+        <span class="text-gray-700">Googleで続ける</span>
+      <% end %>
+
+      <!-- 
+      <%= link_to user_line_omniauth_authorize_path,
+        class: "flex items-center justify-center w-full bg-[#06C755] text-white py-3 rounded-lg font-medium shadow-sm hover:opacity-90 transition" do %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE logo" class="w-6 h-6 mr-3 bg-white rounded-sm p-0.5">
+        <span>LINEで続ける（工事中）</span>
+      <% end %>
+      -->
+    </div>
   </div>
 </div>
