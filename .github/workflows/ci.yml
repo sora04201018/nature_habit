@@ -92,6 +92,10 @@ jobs:
           # テスト環境でGoogleに通信しないようdummyを入れる（今だけ）
           GOOGLE_CLIENT_ID: dummy
           GOOGLE_CLIENT_SECRET: dummy
+          # LINEも同様にdummy入れとく（今だけ）
+          LINE_CLIENT_ID: dummy
+          LINE_CLIENT_SECRET: dummy
+
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
