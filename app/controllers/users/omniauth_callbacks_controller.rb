@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_action :verify_authenticity_token, only: [ :google_oauth2, :line ] # CSRFを一部外す
+
+
   def google_oauth2
     callback("Google")
   end
