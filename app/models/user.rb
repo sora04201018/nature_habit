@@ -35,8 +35,8 @@ class User < ApplicationRecord
 
     # SNS認証で完全な新規作成
     User.create!(
-      email: auth.info.email,
-      name: auth.info.name,
+      email: auth.info.email.presence || "#{auth.uid}@#{auth.provider}.example.com", # LINEの場合、メールバリデーションで引っ掛かってしまうため、一意のダミーを入れる。
+      name: auth.info.name.presence || "#{auth.provider.capitalize}ユーザー",
       password: Devise.friendly_token[0, 20],
       provider: auth.provider,
       uid: auth.uid
