@@ -3,9 +3,13 @@
   <!-- actionごとに表示する通知メッセージを分岐 -->
   <% case notification.action %>
   <% when "comment" %>
-    📝<%= notification.visitor.name %>さんが「<%= notification.notifiable.commentable.title %>」にコメントしました。
+    <% if notification.notifiable.respond_to?(:commentable) %>
+      📝<%= notification.visitor.name %>さんが「<%= notification.notifiable.commentable.title %>」にコメントしました。
+    <% end %>
   <% when "like" %>
-    💚<%= notification.visitor.name %>さんが「<%= notification.notifiable.likeable.title %>」にいいねしました。
+    <% if notification.notifiable.respond_to?(:likeable) %>
+      💚<%= notification.visitor.name %>さんが「<%= notification.notifiable.likeable.title %>」にいいねしました。
+    <% end %>
   <% when "badge" %>
     🎖️バッジを獲得しました!
   <% end %>
