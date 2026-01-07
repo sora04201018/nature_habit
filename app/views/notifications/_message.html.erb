@@ -1,0 +1,26 @@
+<%= link_to notification_path(notification), class: [ "block p-3 rounded transition", notification.read_at.nil? ? "bg-green-50 hover:bg-green-100" : "bg-white text-gray-400 hover:bg-gray-100" ].join("") do %>
+
+  <!-- actionごとに表示する通知メッセージを分岐 -->
+  <% case notification.action %>
+  <% when "comment" %>
+    <% if notification.notifiable.respond_to?(:commentable) %>
+      📝<%= notification.visitor.name %>さんが「<%= notification.notifiable.commentable.title %>」にコメントしました。
+    <% end %>
+  <% when "like" %>
+    <% if notification.notifiable.respond_to?(:likeable) %>
+      💚<%= notification.visitor.name %>さんが「<%= notification.notifiable.likeable.title %>」にいいねしました。
+    <% end %>
+  <% when "badge" %>
+    🎖️バッジを獲得しました!
+  <% end %>
+
+  <span class="text-xs text-gray-400 block">
+    <%= time_ago_in_words(notification.created_at) %>前
+  </span>
+
+  <% if notification.read_at.present? %>
+    <span class="text-xs text-gray-400 border border-gray-300 rounded px-2 py-0.5">
+        既読
+    </span>
+  <% end %>
+<% end %>
