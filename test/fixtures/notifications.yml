@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitor: one
+  visited: one
+  notifiable: one
+  notifiable_type: Habit
+  action: comment
+  read_at: 2026-01-05 16:36:56
+
+two:
+  visitor: two
+  visited: two
+  notifiable: two
+  notifiable_type: Post
+  action: like
+  read_at: 2026-01-05 16:36:56

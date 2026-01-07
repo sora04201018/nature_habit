@@ -17,9 +17,30 @@
     <% end %>
   </div>
 
-  <nav class="space-x-6 text-gray-600">
+  <nav class="flex flex-row space-x-6 text-gray-600">
+    <!-- ユーザーがログインしている場合 -->
     <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, class: "hover:text-green-600", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+      <!-- 通知ベルをログインしているユーザーのみヘッダー表示 -->
+      <div class="relative flex" data-controller="dropdown">
+        <button data-action="click->dropdown#toggle" class="relative text-xl">
+        🔔
+        <% unread_count = current_user.notifications.unread.count %>
+        <% if unread_count > 0 %>
+          <span class="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full px-1">
+            <%= unread_count %>
+          </span>
+        <% end %>
+        </button>
+
+        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-7 z-50">
+          <%= render "notifications/list", notifications: current_user.notifications.order(created_at: :desc).limit(10) %>
+        </div>
+      </div>
+
+      <!-- ログイン中はログアウトボタンの表示 -->
+      <%= link_to "ログアウト", destroy_user_session_path, class: "flex hover:text-green-600", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+
+    <!-- ユーザーがログインしていない場合 -->
     <% else %>
       <%= link_to "ログイン", new_user_session_path, class: "hover:text-green-600" %>
     <% end %>

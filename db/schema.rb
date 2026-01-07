@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_30_091003) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_06_040319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,6 +115,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_30_091003) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.string "action", null: false
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "visitor_id"
+    t.bigint "visited_id", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -160,6 +174,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_30_091003) do
   add_foreign_key "habit_checks", "users"
   add_foreign_key "habits", "users"
   add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "posts", "users"
   add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"

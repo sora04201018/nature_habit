@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  # 通知表示ルート
+  resources :notifications, only: %i[ index show ]
+
   # マイページ用ルート
   get "mypage", to: "users#show"
 
