@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   # 通知表示ルート
   resources :notifications, only: %i[ index show ]
 
+  # webhook(LINE)用ルート line_webhookコントローラーのcallbackメソッド実行。
+  post "/line/webhook", to: "line_webhooks#callback"
+
+  # LINE通知ルート
+  resource :line_notify, only: %i[ create ]
+
   # マイページ用ルート
   get "mypage", to: "users#show"
 
