@@ -63,5 +63,7 @@ Rails.application.routes.draw do
   # internal_badge_assign_path
   namespace :internal do
     post "badge_assign", to: "tasks#badge_assign"
+    # LINE通知タスク
+    post "line_reminder", to: "line_reminders#create"
   end
 end
