@@ -7,14 +7,17 @@
 
     <!-- ユーザー情報 -->
     <p class="text-lg text-gray-800 mb-2">名前：<%= @user.name %></p>
-    <p class="text-gray-600 mb-4">メールアドレス：<%= @user.email %></p>
 
     <!-- 編集ボタン -->
     <div class="flex flex-col mt-4">
       <%= link_to "編集", edit_user_registration_path,
           class: "inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow" %>
+      <!-- LINE連携ボタン -->
+      <%= button_to "LINEで友達追加", line_notify_path, method: :post, data: { turbo: false }, 
+          class: "mt-2 inline-block w-full text-center text-green-500 border-2 border-green-500 hover:text-green-600 font-semibold px-4 py-2 rounded-lg shadow" %>
+
       <%= link_to "ダッシュボードへ戻る", dashboard_path,
-          class: "inline-block w-full mt-2 text-center text-green-700 bg-white px-4 py-2 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition shadow" %>
+          class: "inline-block font-semibold w-full mt-2 text-center text-gray-700 bg-white px-4 py-2 rounded-xl border-2 border-gray-400 hover:bg-gray-50 hover:text-gray-900 transition shadow" %>
     </div>
 
     <!-- 仕切り線 -->

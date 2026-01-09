@@ -1,0 +1,27 @@
+name: "Line Remind"
+
+on:
+  schedule:
+    - cron: "0 11 * * *" # JST 20:00
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Run LINE reminder
+        env:
+          RAILS_ENV: production
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+        run: |
+          bin/rails line_reminder:send
+
