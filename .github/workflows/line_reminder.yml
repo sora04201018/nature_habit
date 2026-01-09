@@ -23,6 +23,7 @@ jobs:
           RAILS_ENV: production
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         run: |
           bin/rails line_reminder:send
 
