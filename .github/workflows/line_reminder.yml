@@ -3,6 +3,7 @@ name: "Line Remind"
 on:
   schedule:
     - cron: "0 11 * * *" # JST 20:00
+  workflow_dispatch:  # 手動で実行できるように追記
 
 jobs:
   send-reminder:
