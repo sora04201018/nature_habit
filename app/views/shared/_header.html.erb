@@ -22,23 +22,29 @@
     <% if user_signed_in? %>
       <!-- 通知ベルをログインしているユーザーのみヘッダー表示 -->
       <div class="relative flex" data-controller="dropdown">
-        <button data-action="click->dropdown#toggle" class="relative text-xl">
-        🔔
-        <% unread_count = current_user.notifications.unread.count %>
-        <% if unread_count > 0 %>
-          <span class="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full px-1">
-            <%= unread_count %>
-          </span>
-        <% end %>
+        <button data-action="click->dropdown#toggle" class="relative flex items-center justify-center w-10 h-10 rounded-full bg-green-50 hover:bg-green-100 transition" aria-label="通知">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor"
+               class="w-6 h-6 text-green-700">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 01-5.714 0M12 3.75a4.5 4.5 0 00-4.5 4.5v2.25c0 .828-.336 1.623-.933 2.196l-.567.554h12l-.567-.554a3.107 3.107 0 01-.933-2.196V8.25A4.5 4.5 0 0012 3.75z" />
+          </svg>
+
+          <% unread_count = current_user.notifications.unread.count %>
+          <% if unread_count > 0 %>
+            <span class="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full min-w-5 h-5 flex items-center justify-center px-1">
+              <%= unread_count %>
+            </span>
+          <% end %>
         </button>
 
-        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-7 z-50">
+        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-9 z-50 w-72 max-w-[90vw] bg-white rounded-xl shadow-lg border border-green-100 sm:right-0 sm:left-auto left-1/2 -translate-x-1/2 sm:translate-x-0">
           <%= render "notifications/list", notifications: current_user.notifications.order(created_at: :desc).limit(10) %>
         </div>
       </div>
 
       <!-- ログイン中はログアウトボタンの表示 -->
-      <%= link_to "ログアウト", destroy_user_session_path, class: "flex hover:text-green-600", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "flex items-center justify-center h-10 px-3 rounded-md hover:text-green-600 hover:bg-green-50 transition", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
 
     <!-- ユーザーがログインしていない場合 -->
     <% else %>
