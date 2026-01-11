@@ -12,9 +12,12 @@
     <div class="flex flex-col mt-4">
       <%= link_to "編集", edit_user_registration_path,
           class: "inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow" %>
-      <!-- LINE連携ボタン -->
-      <%= button_to "LINEで友達追加", line_notify_path, method: :post, data: { turbo: false }, 
-          class: "mt-2 inline-block w-full text-center text-green-500 border-2 border-green-500 hover:text-green-600 font-semibold px-4 py-2 rounded-lg shadow" %>
+      <!-- LINE友達追加ボタン -->
+      <%= button_to line_notify_path, method: :post, data: { turbo: false },
+          class: "mt-2 inline-flex items-center justify-center gap-2 w-full text-center text-green-500 border-2 border-green-500 hover:text-green-600 font-semibold px-4 py-2 rounded-lg shadow" do %>
+        <%= image_tag "line_icon.png", alt: "LINE公式", class: "w-5 h-5" %>
+        <span>LINEで友達追加</span>
+      <% end %>
 
       <%= link_to "ダッシュボードへ戻る", dashboard_path,
           class: "inline-block font-semibold w-full mt-2 text-center text-gray-700 bg-white px-4 py-2 rounded-xl border-2 border-gray-400 hover:bg-gray-50 hover:text-gray-900 transition shadow" %>
