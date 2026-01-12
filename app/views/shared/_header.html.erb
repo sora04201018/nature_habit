@@ -3,7 +3,7 @@
     <% if user_signed_in? %>
       <%= link_to dashboard_path, class: "flex items-center gap-1" do %>
         <%= image_tag "LOGO.png", class: "w-7 h-7 rounded-full", alt: "NatureHabit ロゴ" %>
-        <span class="text-2xl font-bold text-green-700 hover:text-green-500 transition">
+        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-green-700 hover:text-green-500 transition whitespace-nowrap">
           NatureHabit
         </span>
       <% end %>
@@ -17,12 +17,12 @@
     <% end %>
   </div>
 
-  <nav class="flex flex-row space-x-6 text-gray-600">
+  <nav class="flex items-center space-x-2 sm:space-x-4 text-gray-600">
     <!-- ユーザーがログインしている場合 -->
     <% if user_signed_in? %>
       <!-- 通知ベルをログインしているユーザーのみヘッダー表示 -->
       <div class="relative flex" data-controller="dropdown">
-        <button data-action="click->dropdown#toggle" class="relative flex items-center justify-center w-10 h-10 rounded-full bg-green-50 hover:bg-green-100 transition" aria-label="通知">
+        <button data-action="click->dropdown#toggle" class="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-green-50 hover:bg-green-100 transition" aria-label="通知">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                stroke-width="1.8" stroke="currentColor"
                class="w-6 h-6 text-green-700">
@@ -44,7 +44,7 @@
       </div>
 
       <!-- ログイン中はログアウトボタンの表示 -->
-      <%= link_to "ログアウト", destroy_user_session_path, class: "flex items-center justify-center h-10 px-3 rounded-md hover:text-green-600 hover:bg-green-50 transition", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "flex items-center justify-center h-9 sm:h-10 px-2 sm:px-3 text-sm sm:text-base rounded-md hover:text-green-600 hover:bg-green-50 transition whitespace-nowrap", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
 
     <!-- ユーザーがログインしていない場合 -->
     <% else %>
