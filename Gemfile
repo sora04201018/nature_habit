@@ -79,3 +79,6 @@ gem "omniauth-line"
 # OmniAuth CSRF対策（Rails7必須）
 gem "omniauth-rails_csrf_protection"
 gem "dotenv-rails"
+
+# 画像最適化
+gem "image_processing", "~> 1.12"

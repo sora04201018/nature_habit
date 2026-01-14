@@ -7,4 +7,9 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :image, presence: true
+
+  # minimagick画像最適化メソッド
+  def display_image
+    image.variant(resize_to_limit: [ 800, 800 ], format: :webp) # 画像サイズを縦横800pxにし、拡張子をwebp化
+  end
 end
