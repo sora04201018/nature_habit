@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = current_user.notifications.order(created_at: :desc).limit(10)
+    @notifications = current_user.notifications.order(created_at: :desc).limit(5)
   end
 
   def show
