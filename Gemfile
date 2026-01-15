@@ -82,3 +82,5 @@ gem "dotenv-rails"
 
 # 画像最適化
 gem "image_processing", "~> 1.12"
+# AWSのS3と通信するためのgem
+gem "aws-sdk-s3", require: false
