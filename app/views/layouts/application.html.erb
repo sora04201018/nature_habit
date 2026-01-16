@@ -11,8 +11,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -21,6 +19,15 @@
     <!-- スマホ（Safari)用背景色 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#ffffff">
+
+    <!-- favicon（最新ブラウザ：SVG） -->
+    <link rel="icon" type="image/svg+xml" href="<%= asset_path('favicon.svg') %>">
+
+    <!-- favicon（古いブラウザ用：ICO） -->
+    <%= favicon_link_tag 'favicon.ico' %>
+
+    <!-- iOS Safari 用 -->
+    <link rel="apple-touch-icon" href="<%= asset_path('apple-touch-icon.png') %>">
 
     <!-- OGP -->
     <meta property="og:type" content="website" />
