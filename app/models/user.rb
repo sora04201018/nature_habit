@@ -13,7 +13,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 line] # SNS認証（Google・LINE）
 
+  has_one_attached :avatar # プロフィール画像
+
   validates :name, presence: true
+
+  # プロフィール画像最適化
+  def avatar_variant(size = 120)
+    avatar.variant(resize_to_fill: [ size, size ], format: :webp)
+  end
 
   # トータルの達成回数を集計（バッジ付与のため）
   def total_habit_checks_count

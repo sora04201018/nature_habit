@@ -1,9 +1,20 @@
 <!-- コメント用部分テンプレート -->
 <div class="bg-white rounded-lg shadow-sm p-4 mb-3 border mt-5" id="comment_<%= comment.id %>">
   <div class="flex justify-between items-center mb-2">
-    <p class="text-sm font-semibold text-gray-700">
-      <%= comment.user.name %>
-    </p>
+    <div class="flex items-center gap-2">
+      <% if comment.user.avatar.attached? %>
+        <%= image_tag comment.user.avatar_variant(80),
+          class: "w-8 h-8 rounded-full object-cover border" %>
+      <% else %>
+        <%= image_tag "default_avatar.png",
+          class: "w-8 h-8 rounded-full object-cover border" %>
+      <% end %>
+
+      <p class="text-sm font-semibold text-gray-700">
+        <%= comment.user.name %>
+      </p>
+    </div>
+
     <p class="text-xs text-gray-400">
       <%= time_ago_in_words(comment.created_at) %>前
     </p>

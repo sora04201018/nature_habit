@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.includes(image_attachment: :blob).order(created_at: :desc)
+    @posts = Post.includes(:user, image_attachment: :blob).order(created_at: :desc)
   end
 
   def show

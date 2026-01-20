@@ -8,9 +8,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 独自カラム[:name]も編集できるように、 strong parametersに追加
   def configure_permitted_parameters
     # 新規登録の際、nameを許可
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :avatar ])
     # 更新処理の際、nameを許可
-    devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name, :avatar ])
   end
 
   # パスワード無しでアカウント更新を可能にする
