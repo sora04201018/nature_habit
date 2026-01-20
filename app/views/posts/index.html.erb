@@ -21,9 +21,16 @@
           <%= truncate(post.body, length: 80) %>
         </p>
 
-        <p class="text-gray-600 mb-3">
-          投稿者：<%= post.user.name %>
-        </p>
+        <div class="flex gap-2 mb-2 items-center">
+            <% if post.user.avatar.attached? %>
+              <%= image_tag post.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
+            <% else %>
+              <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
+            <% end %>
+            <span class="text-sm font-medium text-gray-700">
+              <%= post.user.name %>
+            </span>
+        </div>
 
         <p class="text-gray-600 mb-3">
           投稿日：<%= l post.created_at %>

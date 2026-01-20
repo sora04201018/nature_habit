@@ -8,7 +8,17 @@
 
           <h2 class="text-green-700 font-bold text-xl mb-4 hover:text-green-800"><%= link_to habit.title, habit_path(habit) %></h2>
 
-          <p class="text-gray-700 mb-2">ユーザー名: <%= habit.user.name %></p>
+          <!-- ユーザーavatar・name -->
+          <div class="flex gap-2 mb-2 items-center">
+            <% if habit.user.avatar.attached? %>
+              <%= image_tag habit.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
+            <% else %>
+              <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
+            <% end %>
+            <span class="text-gray-700">
+              <%= habit.user.name %>
+            </span>
+          </div>
 
           <p class="text-gray-700 mb-2">頻度: <%= t("activerecord.attributes.habit.frequency_values.#{habit.frequency}") %></p>
 
