@@ -1,67 +1,105 @@
-<h1 class="text-center font-bold text-3xl mb-6 mt-5 text-green-800">
-  🌱 みんなの自然 🌱
-</h1>
+<div class="flex grow items-start justify-center p-8">
+  <div class="w-full max-w-4xl">
 
-<div class="pb-20">
-  <!-- 投稿一覧コンテナ -->
-  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+    <h1 class="text-center font-bold text-3xl mb-6 mt-5 text-green-800">🌱 みんなの自然 🌱</h1>
 
-    <% @posts.each do |post| %>
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4">
+    <!-- 検索バー -->
+    <div class="px-2 mb-6">
+      <div class="bg-white w-full shadow-lg rounded-xl p-4 sm:p-6 max-w-3xl mx-auto hover:shadow-2xl transition">
+        
+        <p class="text-sm text-green-500 mb-3">
+          キーワードで自然投稿を探す🌱
+        </p>
 
-        <% if post.image.attached? %>
-          <%= image_tag post.display_image, class: "w-full h-48 object-cover rounded-lg mb-3" %>
+        <%= search_form_for @q, url: posts_path, method: :get do |f| %>
+          <div data-controller="autocomplete" data-autocomplete-url-value="/posts/autocomplete" class="relative">
+            <%= f.search_field :title_or_body_cont, data: { autocomplete_target: "input", action: "input->autocomplete#search" }, placeholder: "タイトルか本文で検索...", class: "w-full px-4 py-3 text-base border border-green-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-300" %>
+            <!-- autocomplete出力 -->
+            <ul data-autocomplete-target="results" class="absolute hidden bg-white border border-green-200  w-full rounded-xl shadow z-10 max-h-60 overflow-y-auto"></ul>
+          </div>
+
+          <div class="flex justify-end mt-2">
+            <%= f.submit "検索", class: "px-6 py-2 bg-green-600 rounded-2xl text-white hover:bg-green-700" %>
+          </div>
         <% end %>
-
-        <h2 class="text-xl font-bold text-green-700 mb-1">
-          <%= post.title %>
-        </h2>
-
-        <p class="text-gray-600 mb-3">
-          <%= truncate(post.body, length: 80) %>
-        </p>
-
-        <div class="flex gap-2 mb-2 items-center">
-            <% if post.user.avatar.attached? %>
-              <%= image_tag post.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
-            <% else %>
-              <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
-            <% end %>
-            <span class="text-sm font-medium text-gray-700">
-              <%= post.user.name %>
-            </span>
-        </div>
-
-        <p class="text-gray-600 mb-3">
-          投稿日：<%= l post.created_at %>
-        </p>
-
-        <%= link_to "詳しく見る", post_path(post),
-            class: "inline-block text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition" %>
-
-        <div class="flex justify-end text-base gap-2 mt-3">
-          <div class="text-green-800">
-            <span>💚</span>
-            <span><%= post.likes.count %></span>
-          </div>
-
-          <div class="text-gray-700">
-            <span>💬</span>
-            <span><%= post.comments.count %></span>
-          </div>
-        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
 
-  <!-- 投稿ボタン -->
-  <div class="text-center mt-10">
-    <%= link_to "🌿 自然を投稿する 🌿", new_post_path,
-        class: "text-green-700 bg-white px-6 py-3 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition font-semibold shadow" %>
-  </div>
+    <div class="pb-20">
+      <!-- 投稿一覧コンテナ -->
+      <% if @posts.any? %>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
 
-  <div class="text-center mt-10">
-    <%= link_to "ダッシュボードに戻る", dashboard_path,
-        class: "text-green-700 bg-white px-6 py-3 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition font-semibold shadow" %>
+          <% @posts.each do |post| %>
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4">
+
+              <% if post.image.attached? %>
+                <%= image_tag post.display_image, class: "w-full h-48 object-cover rounded-lg mb-3" %>
+              <% end %>
+
+              <h2 class="text-xl font-bold text-green-700 mb-1">
+                <%= post.title %>
+              </h2>
+
+              <p class="text-gray-600 mb-3">
+                <%= truncate(post.body, length: 80) %>
+              </p>
+
+              <div class="flex gap-2 mb-2 items-center">
+                  <% if post.user.avatar.attached? %>
+                    <%= image_tag post.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
+                  <% else %>
+                    <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
+                  <% end %>
+                  <span class="text-sm font-medium text-gray-700">
+                    <%= post.user.name %>
+                  </span>
+              </div>
+
+              <p class="text-gray-600 mb-3">
+                投稿日：<%= l post.created_at %>
+              </p>
+
+              <%= link_to "詳しく見る", post_path(post),
+                  class: "inline-block text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition" %>
+
+              <div class="flex justify-end text-base gap-2 mt-3">
+                <div class="text-green-800">
+                  <span>💚</span>
+                  <span><%= post.likes.count %></span>
+                </div>
+
+                <div class="text-gray-700">
+                  <span>💬</span>
+                  <span><%= post.comments.count %></span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      <% else %>
+        <!-- 検索結果なし -->
+        <div class="text-center py-20">
+          <p class="text-gray-500 text-lg mb-2">
+            該当の検索結果がありませんでした
+          </p>
+          <p class="text-gray-400 text-sm">
+            別のキーワードで検索してみてください 🌱
+          </p>
+        </div>
+      <% end %>
+
+      <!-- 投稿ボタン -->
+      <div class="text-center mt-10">
+        <%= link_to "🌿 自然を投稿する 🌿", new_post_path,
+            class: "text-green-700 bg-white px-6 py-3 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition font-semibold shadow" %>
+      </div>
+
+      <div class="text-center mt-10">
+        <%= link_to "ダッシュボードに戻る", dashboard_path,
+            class: "text-green-700 bg-white px-6 py-3 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition font-semibold shadow" %>
+      </div>
+    </div>
   </div>
 </div>

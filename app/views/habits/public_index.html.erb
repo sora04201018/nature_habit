@@ -2,64 +2,109 @@
   <div class="w-full max-w-6xl">
     <h1 class="text-center text-4xl font-bold text-green-700 mb-10">🌱 みんなの習慣 🌱</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <% @habits.each do |habit| %>
-        <div class="bg-white shadow-lg border-green-300 border-3 rounded-xl p-6 hover:shadow-2xl transition">
+    <!-- 検索バー -->
+    <div class="px-2 mb-6">
+      <div class="bg-white w-full shadow-lg rounded-2xl p-4 sm:p-6 max-w-3xl mx-auto hover:shadow-2xl transition">
 
-          <h2 class="text-green-700 font-bold text-xl mb-4 hover:text-green-800"><%= link_to habit.title, habit_path(habit) %></h2>
+        <p class="text-sm text-green-500 mb-3">
+          キーワードで習慣を探す🌱
+        </p>
 
-          <!-- ユーザーavatar・name -->
-          <div class="flex gap-2 mb-2 items-center">
-            <% if habit.user.avatar.attached? %>
-              <%= image_tag habit.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
-            <% else %>
-              <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
-            <% end %>
-            <span class="text-gray-700">
-              <%= habit.user.name %>
-            </span>
+        <%= search_form_for @q, url: public_habit_path, method: :get do |f| %>
+          <!-- タイトル検索 -->
+          <div class="mb-2 relative" data-controller="autocomplete" data-autocomplete-url-value="/habits/autocomplete">
+            <%= f.search_field :title_cont, data: { autocomplete_target: "input", action: "input->autocomplete#search" }, placeholder: "タイトルで検索...", class: "w-full px-4 py-3 text-base border border-green-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-300" %>
+            <!-- autocomplete出力 -->
+            <ul data-autocomplete-target="results" class="absolute z-10 bg-white border border-green-200 w-full rounded-xl shadow hidden max-h-60 overflow-y-auto"></ul>
           </div>
 
-          <p class="text-gray-700 mb-2">頻度: <%= t("activerecord.attributes.habit.frequency_values.#{habit.frequency}") %></p>
-
-          <!-- カテゴリー -->
-          <div class="mb-3">
-            <p class="text-gray-700 mb-1">カテゴリー</p>
-
-            <div class="flex flex-wrap gap-2">
-              <% if habit.categories.any? %>
-                <% habit.categories.each do |category| %>
-                  <span class="inline-block bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full whitespace-nowrap">
-                    <%= category.name %>
-                  </span>
-                <% end %>
-              <% else %>
-                <span class="text-gray-400 text-sm">未設定</span>
-              <% end %>
-            </div>
+          <!-- カテゴリ（タグ）検索 -->
+          <div class="mb-4">
+            <p class="text-gray-600 mb-1">タグで検索</p>
+            <%= f.collection_select :categories_name_eq, Category.order(:name), :name, :name, { include_blank: "すべてのタグ" }, class: "w-full border text-base px-4 py-3 border-green-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-300" %>
           </div>
-
-          <div class="mb-2 text-gray-700">今週の達成率: <%= habit.achievement_rate(habit.user, @week_start) %>%</div>
-
-          <div class="w-full bg-gray-200 rounded-full h-3">
-            <div class="bg-green-500 h-3 rounded-full transition-all duration-500" style="width: <%= habit.achievement_rate(habit.user, @week_start) %>%;"></div>
+          <div class="flex justify-end mt-2">
+            <%= f.submit "検索", class: "px-6 py-2 bg-green-600 rounded-2xl text-white hover:bg-green-700" %>
           </div>
-
-          <div class="flex justify-end text-base gap-2 mt-3">
-            <div class="text-green-800">
-              <span>💚</span>
-              <span><%= habit.likes.count %></span>
-            </div>
-
-            <div class="text-gray-700">
-              <span>💬</span>
-              <span><%= habit.comments.count %></span>
-            </div>
-          </div>
-
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+
+    <!-- 公開習慣一覧 -->
+    <% if @habits.any? %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% @habits.each do |habit| %>
+          <div class="bg-white shadow-lg border-green-300 border-3 rounded-xl p-6 hover:shadow-2xl transition">
+
+            <h2 class="text-green-700 font-bold text-xl mb-4 hover:text-green-800"><%= link_to habit.title, habit_path(habit) %></h2>
+
+            <!-- ユーザーavatar・name -->
+            <div class="flex gap-2 mb-2 items-center">
+              <% if habit.user.avatar.attached? %>
+                <%= image_tag habit.user.avatar_variant(120), class: "rounded-full border object-cover w-10 h-10" %>
+              <% else %>
+                <%= image_tag "default_avatar.png", class: "rounded-full border object-cover w-10 h-10" %>
+              <% end %>
+              <span class="text-gray-700">
+                <%= habit.user.name %>
+              </span>
+            </div>
+
+            <p class="text-gray-700 mb-2">頻度: <%= t("activerecord.attributes.habit.frequency_values.#{habit.frequency}") %></p>
+
+            <!-- カテゴリー -->
+            <div class="mb-3">
+              <p class="text-gray-700 mb-1">カテゴリー</p>
+
+              <div class="flex flex-wrap gap-2">
+                <% if habit.categories.any? %>
+                  <% habit.categories.each do |category| %>
+                    <span class="inline-block bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full whitespace-nowrap">
+                      <%= category.name %>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <span class="text-gray-400 text-sm">未設定</span>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- 達成率 -->
+            <div class="mb-2 text-gray-700">今週の達成率: <%= habit.achievement_rate(habit.user, @week_start) %>%</div>
+
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div class="bg-green-500 h-3 rounded-full transition-all duration-500" style="width: <%= habit.achievement_rate(habit.user, @week_start) %>%;"></div>
+            </div>
+
+            <div class="flex justify-end text-base gap-2 mt-3">
+              <!-- いいね -->
+              <div class="text-green-800">
+                <span>💚</span>
+                <span><%= habit.likes.count %></span>
+              </div>
+
+              <!-- コメント数 -->
+              <div class="text-gray-700">
+                <span>💬</span>
+                <span><%= habit.comments.count %></span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <% else %>
+      <!-- 検索結果なし -->
+      <div class="text-center py-20">
+        <p class="text-gray-500 text-lg mb-2">
+          該当の検索結果がありませんでした
+        </p>
+        <p class="text-gray-400 text-sm">
+          別のキーワードやタグで検索してみてください 🌱
+        </p>
+      </div>
+    <% end %>
+
     <div class="text-center mt-10">
       <%= link_to "ダッシュボードに戻る", dashboard_path,
           class: "text-green-700 bg-white px-6 py-3 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition font-semibold shadow" %>

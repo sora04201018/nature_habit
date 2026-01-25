@@ -4,7 +4,9 @@ class HabitsController < ApplicationController
 
   # 習慣公開処理
   def public_index
-    @habits = Habit.publicly_visible.includes(:user).order(created_at: :desc)
+    # 検索処理
+    @q = Habit.publicly_visible.ransack(params[:q])
+    @habits = @q.result(distinct: true).includes(:user, :categories).order(created_at: :desc)
     @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
   end
 
@@ -55,6 +57,15 @@ class HabitsController < ApplicationController
   def destroy
     @habit.destroy!
     redirect_to habits_path, notice: "習慣を削除しました", status: :see_other
+  end
+
+  # autocomplete処理
+  def autocomplete
+    keyword = params[:q]
+
+    habits = Habit.publicly_visible.where("title LIKE ?", "%#{keyword}%").limit(10).pluck(:title)
+
+    render json: habits
   end
 
   private

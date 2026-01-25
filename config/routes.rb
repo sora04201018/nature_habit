@@ -45,6 +45,11 @@ Rails.application.routes.draw do
     resources :habit_checks, only: %i[ create destroy ] # habits_checksルート
     resources :comments, only: %i[ create destroy ] # habits用commentsルート
     resource :like, only: %i[ create destroy ] # habits用likesルート
+
+    # autocomplete用ルート
+    collection do
+      get :autocomplete
+    end
   end
 
   # 習慣公開ルート（みんなの習慣）
@@ -54,6 +59,11 @@ Rails.application.routes.draw do
   resources :posts, only: %i[ index show new edit update create destroy ] do
     resources :comments, only: %i[ create destroy ] # posts用commentsルート
     resource :like, only: %i[ create destroy ] # posts用likesルート
+
+    # autocomplete用ルート
+    collection do
+      get :autocomplete
+    end
   end
 
   # rails側でカテゴリー一覧をJSONで返すためのルート（tagify使用しているため）
