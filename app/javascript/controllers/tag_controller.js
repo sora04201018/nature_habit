@@ -15,7 +15,7 @@ export default class extends Controller {
       whitelist: this.tagsValue, // 既存カテゴリー入れる
       dropdown: {
         enabled: 0,      // フォーカスで表示
-        maxItems: 10,
+        maxItems: 20,
         closeOnSelect: false
       }
     })

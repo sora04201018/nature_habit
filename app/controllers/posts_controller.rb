@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.includes(:user, image_attachment: :blob).order(created_at: :desc)
+    # 検索処理
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.includes(:user, image_attachment: :blob).order(created_at: :desc)
   end
 
   def show
@@ -43,6 +45,15 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     @post.destroy!
     redirect_to posts_path, notice: "投稿を削除しました", status: :see_other
+  end
+
+  # autocomplete処理
+  def autocomplete
+    keyword = params[:q]
+
+    posts = Post.where("title LIKE :q OR body LIKE :q", q: "%#{keyword}%").limit(10).pluck(:title)
+
+    render json: posts
   end
 
   private

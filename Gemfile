@@ -84,3 +84,6 @@ gem "dotenv-rails"
 gem "image_processing", "~> 1.12"
 # AWSのS3と通信するためのgem
 gem "aws-sdk-s3", require: false
+
+# 検索機能
+gem "ransack"

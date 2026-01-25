@@ -49,4 +49,14 @@ class Habit < ApplicationRecord
     # roundメソッドで小数点を四捨五入切り捨て
     ((achievement_count.to_f / target) * 100).round
   end
+
+  # ransack検索許可
+  def self.ransackable_attributes(auth_object = nil)
+    [ "title" ] # 習慣はタイトル検索
+  end
+
+  # ransack関連
+  def self.ransackable_associations(auth_object = nil)
+    [ "categories" ]
+  end
 end

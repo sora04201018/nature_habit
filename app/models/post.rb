@@ -12,4 +12,14 @@ class Post < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [ 800, 800 ], format: :webp) # 画像サイズを縦横800pxにし、拡張子をwebp化
   end
+
+  # ransack検索許可
+  def self.ransackable_attributes(auth_object = nil)
+    [ "title", "body" ] # 投稿はタイトル・本文で検索
+  end
+
+  # ransack関連
+  def self.ransackable_associations(auth_object = nil)
+    [ "user", "image_attachment", "image_blob", "comments", "likes" ]
+  end
 end
