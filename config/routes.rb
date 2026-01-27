@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # トップページ
   root to: "home#home"
+  # プライバシーポリシー
+  get "privacy", to: "home#privacy", as: :privacy
+  # 利用規約
+  get "terms", to: "home#terms", as: :terms
 
   # ダッシュボード
   get "dashboard", to: "dashboard#index"

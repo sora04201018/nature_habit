@@ -25,5 +25,5 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         run: |
-          curl -X POST https://nature-habit.onrender.com/internal/line_reminder \
+          curl -X POST https://nature-habit.com/internal/line_reminder \
             -H "X-INTERNAL-TOKEN: ${{ secrets.INTERNAL_API_TOKEN }}"

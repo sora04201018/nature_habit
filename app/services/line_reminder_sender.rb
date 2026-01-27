@@ -24,7 +24,7 @@ class LineReminderSender
     少しだけ自然に触れて、記録してみませんか？😊
 
     ▼ 今すぐアプリを開く
-    https://nature-habit.onrender.com
+    https://nature-habit.com
     MESSAGE
   end
 end

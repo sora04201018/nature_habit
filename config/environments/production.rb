@@ -83,7 +83,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # renderのURL
-  config.action_mailer.default_url_options = { host: "nature-habit.onrender.com", protocol: "https" }
+  config.action_mailer.default_url_options = { host: "nature-habit.com", protocol: "https" }
 
   # gmail経由での送信(Gmail SMTP使用)
   config.action_mailer.delivery_method = :smtp
@@ -120,4 +120,8 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # 独自ドメイン設定
+  config.hosts << "nature-habit.com"
+  config.hosts << "www.nature-habit.com"
 end

@@ -14,7 +14,7 @@ class Internal::TasksController < ApplicationController
 
   private
 
-  # 超簡単なAPIトークン認証
+  # APIトークン認証
   def authenticate_api!
     token = request.headers["Authorization"]
     unless token == "Bearer #{ENV['TASK_API_TOKEN']}"

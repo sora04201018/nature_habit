@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Call Rails badge assign endpoint
         run: |
-          curl -X POST https://nature-habit.onrender.com/internal/badge_assign \
+          curl -X POST https://nature-habit.com/internal/badge_assign \
             -H "Authorization: Bearer ${{ secrets.TASK_API_TOKEN }}"
