@@ -124,4 +124,7 @@ Rails.application.configure do
   # 独自ドメイン設定
   config.hosts << "nature-habit.com"
   config.hosts << "www.nature-habit.com"
+
+  # renderドメイン設定
+  config.hosts << "nature-habit.onrender.com"
 end
