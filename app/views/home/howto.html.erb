@@ -1,0 +1,99 @@
+<% content_for :title, "使い方|NatureHabit" %>
+<% content_for :head do %>
+  <meta name="description"
+        content="NatureHabitの使い方をわかりやすく解説。習慣の登録方法、記録の見方、自然との向き合い方をご紹介します。" />
+<% end %>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-green-700 mb-4 text-center">
+    NatureHabitとは？
+  </h1>
+
+  <p class="text-gray-700 leading-relaxed mb-10 text-center">
+    NatureHabitは、自然に関する習慣や日々の気づきを記録し、
+    振り返りを通じて自然とのつながりを育てるためのアプリです。
+    <br class="hidden sm:block">
+    できること・使い方を順番にご紹介します。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+    <!-- 習慣記録機能 -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">01. 🌱 習慣の記録</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        自然に関する習慣を登録し、日々の実践を記録できます。<br>
+        習慣のチェックボックスを押すと、その日の習慣がチェックされ、
+        習慣頻度に応じた達成率を、確認できます。
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use01.jpg", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+
+    <!-- 自然投稿機能 -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">02. 📸 自然投稿</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        写真や文章で自然との体験を投稿できます。
+        「みんなの自然」から体験した自然に関する投稿をすることができます。
+        投稿する写真は１枚のみ選択可能です。
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use02.jpg", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+
+    <!-- バッジ機能 -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">03. 🪙 バッジ獲得</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        習慣を続けていくと、バッジを獲得することができます。<br>
+        バッジを獲得した際は、通知ベルにて確認できます。<br>
+        習慣を続けて、全てのバッジを手に入れてみよう！
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use03.png", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+
+    <!-- マイカレンダー -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">04. 🗓️ カレンダー</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        マイカレンダーで習慣の継続状況を確認することができます。
+        達成状況を確認して、モチベーションアップ！
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use04.png", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+
+    <!-- LINE通知 -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">05. 📢 LINE通知</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        マイページより友達追加すると、NatureHabit公式LINEからリマインド通知を受け取ることができます。
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use05.png", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+
+    <!-- SNS共有 -->
+    <div class="bg-white p-6 rounded-3xl shadow hover:shadow-lg transition flex flex-col">
+      <h3 class="font-semibold text-green-700 mb-2 text-lg">06. 📱 SNS共有</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        習慣・自然投稿をXにてSNS共有することができます。
+      </p>
+      <div class="mt-auto">
+        <%= image_tag "how_to_use06.png", class: "rounded-xl shadow-sm w-full aspect-video object-contain" %>
+      </div>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to "ダッシュボードへ戻る", dashboard_path, class: "inline-block font-semibold max-w-md mx-auto block mt-5 text-center text-green-700 bg-white px-4 py-2 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition shadow" %>
+  <% else %>
+    <%= link_to "ホームへ戻る", root_path, class: "inline-block font-semibold max-w-md mx-auto block mt-5 text-center text-green-700 bg-white px-4 py-2 rounded-xl border-2 border-green-400 hover:bg-green-50 hover:text-green-900 transition shadow" %>
+  <% end %>
+</div>

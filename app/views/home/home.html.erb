@@ -1,3 +1,9 @@
+<% content_for :title, "NatureHabit|自然と毎日を整える習慣記録アプリ" %>
+<% content_for :head do %>
+  <meta name="description"
+        content="散歩・植物・空を見るなど、日常の中で自然と触れ合う習慣をやさしく記録・可視化できるアプリです。" />
+<% end %>
+
 <!-- メインコンテンツ -->
 <main class="grow mt-10 flex flex-col items-center justify-center text-center p-8" data-controller="reveal">
   <h1 class="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-green-700 mb-6 mt-6 leading-tight fade-in-up" data-reveal-target="item">
@@ -64,7 +70,11 @@
         毎日の自然とのふれあいを、月ごとに可視化してゆっくり振り返ることができます。
       </p>
     </div>
+  </div>
 
+  <!-- 詳しい使い方 -->
+  <div class="fade-in-up mt-12 justify-center text-center" data-reveal-target="item">
+    <%= link_to "🌱 詳しい使い方はこちら 🌱", howto_path, class: "text-center border text-green-500 border-green-500 bg-white px-4 py-3 rounded-2xl hover:text-green-700 transition" %>
   </div>
 </div>
 

@@ -1,7 +1,24 @@
-<footer class="bg-green-700 text-white py-4">
-  <div class="flex justify-end space-x-4 mr-8">
-    <%= link_to "利用規約", terms_path, class: "text-right" %>
-    <%= link_to "お問い合わせ(工事中)", '#', class: "text-right" %>
-    <%= link_to "プライバシーポリシー", privacy_path, class: "text-right" %>
+<footer class="bg-green-700 text-white">
+  <div class="max-w-6xl mx-auto px-4 py-6">
+    <nav class="
+      grid grid-cols-2 gap-4 text-center
+      sm:grid-cols-4
+    ">
+      <%= link_to "使い方", howto_path,
+        class: "text-sm hover:text-green-200 transition" %>
+
+      <%= link_to "利用規約", terms_path,
+        class: "text-sm hover:text-green-200 transition" %>
+
+      <%= link_to "お問い合わせ", contact_path,
+        class: "text-sm hover:text-green-200 transition" %>
+
+      <%= link_to "プライバシーポリシー", privacy_path,
+        class: "text-sm hover:text-green-200 transition" %>
+    </nav>
+
+    <p class="mt-6 text-center text-xs text-green-100">
+      © <%= Time.current.year %> NatureHabit All Rights Reserved.
+    </p>
   </div>
 </footer>
