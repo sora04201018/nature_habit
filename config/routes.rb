@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   get "privacy", to: "home#privacy", as: :privacy
   # 利用規約
   get "terms", to: "home#terms", as: :terms
+  # お問い合わせ
+  get "contact", to: "home#contact", as: :contact
+  # 使い方
+  get "howto", to: "home#howto", as: :howto
 
   # ダッシュボード
   get "dashboard", to: "dashboard#index"

@@ -1,0 +1,27 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <!-- ページタイトル -->
+  <h1 class="text-3xl font-bold text-green-700 text-center mb-2">
+    お問い合わせ
+  </h1>
+  <p class="text-gray-600 text-sm text-center mb-6">
+    ご質問・ご意見などがございましたら、下記フォームよりお気軽にお問い合わせください。
+  </p>
+
+  <!-- 戻るボタン -->
+  <div class="mb-4 text-center">
+    <% if user_signed_in? %>
+      <%= link_to "ダッシュボードに戻る", dashboard_path, class: "inline-block text-green-600 hover:text-green-800 underline" %>
+    <% else %>
+      <%= link_to "ホームへ戻る", root_path, class: "inline-block text-green-600 hover:text-green-800 underline" %>
+    <% end %>
+  </div>
+
+  <!-- Googleフォーム埋め込み -->
+  <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdY0SdZOQ1dbN05SgmaIrmoF_CLTrF71Csuu8hY-3fG_mdq2w/viewform?usp=dialog"
+      class="w-full h-[900px] border-none"
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>
