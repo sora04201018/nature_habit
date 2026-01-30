@@ -16,7 +16,7 @@
     <div class="mb-3" data-controller="image-preview">
       <%= f.label :image, "画像(*必須)", class: "block font-semibold" %>
 
-      <% if @post.image.attached? %>
+      <% if @post.persisted? && @post.image.attached? %>
         <%= image_tag @post.image, id: "post-image-preview", class: "w-24 h-24 object-cover rounded mb-2" %>
       <% else %>
         <%= image_tag "", id: "post-image-preview", class: "w-24 h-24 object-cover rounded mb-2 hidden" %>
