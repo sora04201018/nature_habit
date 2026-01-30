@@ -27,7 +27,7 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 ①ユーザーは「自然と触れ合う習慣」（例：散歩・植物の写真を撮る・公園で読書など）を登録  
 ②1日の終わりに、その習慣を実行したらチェックをつける  
 ③カレンダーで達成状況が見える化され、モチベーションを維持  
-④習慣が続くと「バッジ」が付与され、ゲーム感覚で継続できる
+④習慣が続くと「バッジ」が付与され、ゲーム感覚で継続できる  
 ⑤自然スポットの写真を投稿・共有できる 
 
 ## ユーザーの獲得について
@@ -49,7 +49,7 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 ・カレンダー表示（達成状況の可視化）  
 ・達成率表示機能  
 → ①達成された習慣ごとに、直近7日間の達成率を算出します。  
-→ ②達成率 = 達成日数 ÷ 登録日数 × 100（小数点1桁で表示予定）    
+→ ②達成率 = 達成日数 ÷ 登録日数 × 100  
 ・TailwindでUIを整える  
 
 ## 追加機能
@@ -58,18 +58,23 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 ・習慣公開・非公開機能
 ・写真投稿（今日の自然）   
 ・コメントや共感リアクション機能   
+・検索機能（オートコンプリート検索）  
+・LINE・Googleによる登録・ログイン機能  
+・投稿画像のwebp化・S3保存  
 ・通知機能（コメント・いいね・バッジ獲得）  
+・静的OGP  
 ・LINEリマインド機能（今日の習慣を忘れていませんか？）  
 ・SNS共有機能（X）  
 
 ## 使用する技術スタック
 ・フレームワーク：Ruby on Rails 7.2（Ruby 3.2.2）  
-・フロントエンド：Tailwind CSS  
+・フロントエンド：Tailwind CSS・stimulus  
 ・データベース：PostgreSQL  
-・追加予定のライブラリ: SimpleCalendar（カレンダー機能）, ActiveStorage（画像アップロード）, Kaminari(ページネーション)など  
+・インフラ：render・S3・独自ドメイン  
+・外部連携：OmniAuth（Google OAuth2 / LINE Login）・LINE Messaging API  
 
 ## 画面遷移図
 figma: https://www.figma.com/design/SJL6Z0gGEtckps7N2yZ4kl/NatureHabit?node-id=0-1&t=QIsSXZYWmVDyMSQK-1  
 
 ## ER図
-![alt text](NatureHabit_ER図.png)  
+![alt text](<NatureHabit ER図.png>)  

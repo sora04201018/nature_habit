@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :image, presence: true
 
+  validates :uuid, uniqueness: true
+
   # minimagick画像最適化メソッド
   def display_image
     image.variant(resize_to_limit: [ 800, 800 ], format: :webp) # 画像サイズを縦横800pxにし、拡張子をwebp化
@@ -21,5 +23,10 @@ class Post < ApplicationRecord
   # ransack関連
   def self.ransackable_associations(auth_object = nil)
     [ "user", "image_attachment", "image_blob", "comments", "likes" ]
+  end
+
+  # id部分をuuidに変換（URLのみuuidに変換し、表示）
+  def to_param
+    uuid
   end
 end
