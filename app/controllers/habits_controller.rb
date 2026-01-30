@@ -20,7 +20,7 @@ class HabitsController < ApplicationController
   end
 
   def show
-    @habit = Habit.find_by(id: params[:id])
+    @habit = Habit.find_by!(uuid: params[:id])
     @comments = @habit.comments.order(created_at: :desc) # コメント降順
     @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
   end
@@ -75,7 +75,7 @@ class HabitsController < ApplicationController
   end
 
   def set_habits
-    @habit = current_user.habits.includes(:categories).find_by(id: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
+    @habit = current_user.habits.includes(:categories).find_by!(uuid: params[:id]) # 他のユーザーがアクセスできないようcurrent_userで取り出す。
   end
 
   def save_categories_from_json(habit, json)

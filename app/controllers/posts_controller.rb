@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by!(uuid: params[:id])
     @comments = @post.comments.order(created_at: :desc)
   end
 
@@ -27,11 +27,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by!(uuid: params[:id])
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by!(uuid: params[:id])
 
     if @post.update(post_params)
       redirect_to post_path, notice: "投稿を更新しました"
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by!(uuid: params[:id])
     @post.destroy!
     redirect_to posts_path, notice: "投稿を削除しました", status: :see_other
   end

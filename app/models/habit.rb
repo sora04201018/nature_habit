@@ -10,11 +10,18 @@ class Habit < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
 
+  validates :uuid, presence: true, uniqueness: true
+
   # frequency 頻度enum管理(毎日・週に3回・週に1回)
   enum frequency: { daily: 0, three_times_week: 1, once_a_week: 2 }
 
   # 公開されている習慣のみを取得する scope（ビューやコントローラで使う）。 publicly_visibleメソッドをシンボルで定義。
   scope :publicly_visible, -> { where(is_public: true) }
+
+  # idをuuidに変換（id自体は残して、URLをuuidで表示
+  def to_param
+    uuid
+  end
 
   # 特定の習慣を特定のユーザーが特定の日にチェックしたかを返すメソッド
   def checked_on?(user, date)
