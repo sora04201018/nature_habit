@@ -10,7 +10,7 @@ class Habit < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
 
-  validates :uuid, presence: true, uniqueness: true
+  validates :uuid, uniqueness: true
 
   # frequency 頻度enum管理(毎日・週に3回・週に1回)
   enum frequency: { daily: 0, three_times_week: 1, once_a_week: 2 }
