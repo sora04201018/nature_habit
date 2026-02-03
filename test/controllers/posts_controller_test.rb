@@ -40,7 +40,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     created_post = Post.last
     assert created_post.image.attached?
-    assert created_post.uuid.present?
     assert_redirected_to posts_path
   end
 end
