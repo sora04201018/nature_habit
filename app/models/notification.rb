@@ -22,9 +22,9 @@ class Notification < ApplicationRecord
   def valid_target?
     case action
     when "comment"
-      notifiable.present? && notifiable.commentable.present?
+      notifiable.is_a?(Comment) && notifiable.commentable.present?
     when "like"
-      notifiable.present? && notifiable.likeable.present?
+      notifiable.is_a?(Like) && notifiable.likeable.present?
     when "badge"
       true
     else
