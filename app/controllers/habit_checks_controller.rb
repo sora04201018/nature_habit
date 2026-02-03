@@ -43,7 +43,7 @@ class HabitChecksController < ApplicationController
   private
 
   def set_habit
-    @habit = Habit.find(params[:habit_id])
+    @habit = Habit.find_by!(uuid: params[:habit_id])
   end
 
   def set_week_dates
