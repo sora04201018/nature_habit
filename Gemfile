@@ -87,3 +87,6 @@ gem "aws-sdk-s3", require: false
 
 # 検索機能
 gem "ransack"
+
+# ページネーション
+gem "kaminari"

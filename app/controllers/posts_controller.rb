@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     # 検索処理
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(:user, image_attachment: :blob).order(created_at: :desc)
+    @posts = @q.result.includes(:user, image_attachment: :blob).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def show
