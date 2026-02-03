@@ -6,7 +6,7 @@ class HabitsController < ApplicationController
   def public_index
     # 検索処理
     @q = Habit.publicly_visible.ransack(params[:q])
-    @habits = @q.result(distinct: true).includes(:user, :categories).order(created_at: :desc)
+    @habits = @q.result(distinct: true).includes(:user, :categories).order(created_at: :desc).page(params[:page]).per(6)
     @week_start = Date.current.beginning_of_week(:monday) # 月曜開始
   end
 

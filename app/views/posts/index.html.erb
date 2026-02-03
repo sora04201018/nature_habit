@@ -90,6 +90,11 @@
         </div>
       <% end %>
 
+      <!-- ページネーション -->
+      <div class="mt-5 mb-5 justify-center">
+        <%= paginate @posts %>
+      </div>
+
       <!-- 投稿ボタン -->
       <div class="text-center mt-10">
         <%= link_to "🌿 自然を投稿する 🌿", new_post_path,
