@@ -8,6 +8,7 @@ one:
   title: "朝の散歩"
   frequency: daily
   is_public: true
+  uuid: <%= SecureRandom.uuid %>
   user: one
 # column: value
 #
@@ -15,5 +16,6 @@ two:
   title: "植物の水やり"
   frequency: once_a_week
   is_public: false
+  uuid: <%= SecureRandom.uuid %>
   user: two
 # column: value

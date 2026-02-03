@@ -30,7 +30,7 @@
               d="M14.857 17.082a23.848 23.848 0 01-5.714 0M12 3.75a4.5 4.5 0 00-4.5 4.5v2.25c0 .828-.336 1.623-.933 2.196l-.567.554h12l-.567-.554a3.107 3.107 0 01-.933-2.196V8.25A4.5 4.5 0 0012 3.75z" />
           </svg>
 
-          <% unread_count = current_user.notifications.unread.count %>
+          <% unread_count = current_user.notifications.unread.select(&:valid_target?).count %>
           <% if unread_count > 0 %>
             <span class="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full min-w-5 h-5 flex items-center justify-center px-1">
               <%= unread_count %>

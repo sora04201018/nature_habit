@@ -29,10 +29,10 @@ class CommentsController < ApplicationController
 
   def set_commentables
     if params[:habit_id]
-      @commentable = Habit.find(params[:habit_id])
+      @commentable = Habit.find_by!(uuid: params[:habit_id])
 
     elsif params[:post_id]
-      @commentable = Post.find(params[:post_id])
+      @commentable = Post.find_by!(uuid: params[:post_id])
     end
   end
 

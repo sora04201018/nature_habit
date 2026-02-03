@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :image, presence: true
 
-  validates :uuid, uniqueness: true
+  validates :uuid, presence: true, uniqueness: true
 
   # minimagick画像最適化メソッド
   def display_image

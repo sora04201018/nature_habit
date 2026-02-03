@@ -27,10 +27,10 @@ class LikesController < ApplicationController
 
   def set_likeable
     if params[:habit_id]
-      @likeable = Habit.find(params[:habit_id])
+      @likeable = Habit.find_by!(uuid: params[:habit_id])
 
     elsif params[:post_id]
-      @likeable = Post.find(params[:post_id])
+      @likeable = Post.find_by!(uuid: params[:post_id])
     end
   end
 end
