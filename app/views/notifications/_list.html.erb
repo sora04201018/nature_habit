@@ -1,7 +1,7 @@
-<div class="w-80 bg-white shadow-lg rounded-lg border hover:shadow-2xl">
+<div class="w-full bg-white shadow-lg rounded-lg border hover:shadow-2xl">
   <% if notifications.any? %>
     <% notifications.select(&:valid_target?).each do |notification| %>
-      <div class="px-4 py-3 border-b text-sm">
+      <div class="px-4 py-3 border-b text-xs sm:text-sm">
         <%= render "notifications/message", notification: notification %>
       </div>
     <% end %>

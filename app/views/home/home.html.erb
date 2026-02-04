@@ -1,4 +1,4 @@
-<% content_for :title, "NatureHabit|自然と毎日を整える習慣記録アプリ" %>
+<% content_for :title, "NatureHabit | 自然と毎日を整える習慣記録アプリ" %>
 <% content_for :head do %>
   <meta name="description"
         content="散歩・植物・空を見るなど、日常の中で自然と触れ合う習慣をやさしく記録・可視化できるアプリです。" />
@@ -140,5 +140,44 @@
         習慣のチェック漏れを防ぐことができます。<br>
       </p>
     </div>
+  </div>
+</div>
+
+<!-- ホーム画面に追加 -->
+<div class="items-center flex flex-col my-24 px-6" data-controller="reveal">
+
+  <h2 class="text-xl md:text-3xl font-bold text-green-600 mb-8 fade-in-up" data-reveal-target="item">
+    📱 ホーム画面に追加するともっと便利
+  </h2>
+
+  <p class="text-sm md:text-base text-gray-600 text-center max-w-xl mb-12 fade-in-up" data-reveal-target="item">
+    NatureHabitをホーム画面に追加すると、<br>
+    アプリのようにすぐ起動でき、毎日の習慣チェックがもっと続けやすくなります。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
+
+    <!-- iPhone -->
+    <div class="fade-in-up bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl p-6 border border-green-200" data-reveal-target="item">
+      <h3 class="text-lg font-semibold text-green-700 mb-3">🍎 iPhone（Safari）</h3>
+      <ol class="text-sm text-gray-700 space-y-2 list-decimal list-inside">
+        <li>SafariでNatureHabitを開く</li>
+        <li>画面下の「共有」ボタンをタップ</li>
+        <li>「ホーム画面に追加」を選択</li>
+        <li>完了！ホーム画面からすぐ起動できます</li>
+      </ol>
+    </div>
+
+    <!-- Android -->
+    <div class="fade-in-up bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl p-6 border border-green-200" data-reveal-target="item">
+      <h3 class="text-lg font-semibold text-green-700 mb-3">🤖 Android（Chrome）</h3>
+      <ol class="text-sm text-gray-700 space-y-2 list-decimal list-inside">
+        <li>ChromeでNatureHabitを開く</li>
+        <li>右上の「︙」メニューをタップ</li>
+        <li>「ホーム画面に追加」を選択</li>
+        <li>完了！アプリ感覚で使えます</li>
+      </ol>
+    </div>
+
   </div>
 </div>

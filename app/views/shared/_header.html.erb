@@ -38,7 +38,7 @@
           <% end %>
         </button>
 
-        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-9 z-50 w-72 max-w-[90vw] bg-white rounded-xl shadow-lg border border-green-100 sm:right-0 sm:left-auto left-1/2 -translate-x-1/2 sm:translate-x-0">
+        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-9 z-50 sm:w-72 w-[90vw] max-h-[70vh] overflow-y-auto bg-white rounded-xl shadow-lg border border-green-100 sm:right-0 sm:left-auto left-1/2 -translate-x-1/2 sm:translate-x-0">
           <%= render "notifications/list", notifications: current_user.notifications.order(created_at: :desc).limit(5) %>
         </div>
       </div>
