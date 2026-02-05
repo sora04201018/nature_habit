@@ -41,7 +41,7 @@ Devise.setup do |config|
   # with default "from" parameter.
 
   # resend使用
-  config.mailer_sender = ENV.fetch("MAIL_FROM")
+  config.mailer_sender = ENV["MAIL_FROM"] || "no-reply@dummy.local"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
