@@ -90,3 +90,6 @@ gem "ransack"
 
 # ページネーション
 gem "kaminari"
+
+# 本番メール関係
+gem "resend"
