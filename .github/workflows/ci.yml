@@ -97,6 +97,7 @@ jobs:
           LINE_CLIENT_SECRET: dummy
 
           MAIL_FROM: no-reply@test.example # CIテスト用
+          RESEND_API_KEY: dummy
 
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
