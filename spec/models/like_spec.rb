@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Like, type: :model do
-  
   describe "バリデーション" do
     context "有効な場合" do
       it "有効なlike" do
@@ -38,11 +37,11 @@ RSpec.describe Like, type: :model do
 
   describe "いいね通知" do
     let(:post_owner) { create(:user) }
-    let(:other_user) {create(:user) }
-    let(:post) {create(:post, user: post_owner) }
+    let(:other_user) { create(:user) }
+    let(:post) { create(:post, user: post_owner) }
 
     it "他人の投稿にいいねすると通知が作られる" do
-      expect{ create(:like, user: other_user, likeable: post) }.to change(Notification, :count).by(1)
+      expect { create(:like, user: other_user, likeable: post) }.to change(Notification, :count).by(1)
     end
 
     it "自分の投稿にいいねした場合は通知は作られない" do

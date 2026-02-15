@@ -1,8 +1,7 @@
-# habitモデルテスト 
+# habitモデルテスト
 require "rails_helper"
 
 RSpec.describe Habit, type: :model do
-  
   describe "バリデーションテスト" do
     context "有効な場合" do
       it "title, frequency, is_publicがあれば有効" do

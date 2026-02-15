@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Comment, type: :model do
-  
   describe "バリデーション" do
     context "有効な場合" do
       it "bodyがあれば有効" do
@@ -44,11 +43,11 @@ RSpec.describe Comment, type: :model do
     let(:post) { create(:post, user: post_owner) }
 
     it "他人の投稿にコメントすると通知が作られる" do
-      expect{ create(:comment, user: other_user, commentable: post) }.to change(Notification, :count).by(1)
+      expect { create(:comment, user: other_user, commentable: post) }.to change(Notification, :count).by(1)
     end
 
     it "自分の投稿に自分でコメント場合は通知は作られない" do
-      expect{ create(:comment, user: post_owner, commentable: post) }.not_to change(Notification, :count)
+      expect { create(:comment, user: post_owner, commentable: post) }.not_to change(Notification, :count)
     end
   end
 end

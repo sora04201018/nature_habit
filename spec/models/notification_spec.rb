@@ -56,5 +56,4 @@ RSpec.describe Notification, type: :model do
       expect(notification.redirect_path).to eq(expect_path)
     end
   end
-
 end

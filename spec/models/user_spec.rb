@@ -2,9 +2,7 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-
   describe "バリデーションチェック" do
-
     context "有効な場合" do
       it "name, email, passwordがあれば有効" do
         user = build(:user)
@@ -91,4 +89,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-

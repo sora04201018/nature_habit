@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe HabitCheck, type: :model do
-  
   describe "バリデーションテスト" do
     it "checked_onがあれば有効" do
       habit_check = build(:habit_check)
@@ -32,6 +31,4 @@ RSpec.describe HabitCheck, type: :model do
       expect(association.macro).to eq(:belongs_to)
     end
   end
-
 end
-
