@@ -77,4 +77,19 @@ NatureHabitは、「日常の中で自然と触れ合う習慣」を管理・可
 figma: https://www.figma.com/design/SJL6Z0gGEtckps7N2yZ4kl/NatureHabit?node-id=0-1&t=QIsSXZYWmVDyMSQK-1  
 
 ## ER図
-![alt text](<NatureHabit ER図.png>)  
+![alt text](NatureHabit_ER図.png)  
+### 補足
+- ポリモーフィック関連  
+
+#### ■ コメント機能（Comment）  
+- commentable_type：紐づくモデル名（Post または Habit）  
+- commentable_id：紐づくレコードのID  
+
+#### ■ いいね機能（Like）
+- likeable_type：紐づくモデル名（Post または Habit）  
+- likeable_id：紐づくレコードのID  
+
+#### ■ 通知機能（Notification）
+
+- notifiable_type：通知の対象（Comment / Like / Badge ）  
+- notifiable_id：対象レコードのID  
